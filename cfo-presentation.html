@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="snowflake-source" content="cortex-agent-authored" />
+<title>Aldwych Bank · CFO Presentation</title>
+<script type="application/json" id="snowflake-report-metadata">
+{
+  "generated": "2026-09-17",
+  "intent": "Customer-facing CFO presentation for Andrew Harper (CFO, Aldwych Bank) — 6 slides, boiled down to only what is shown in the room. Internal prep material (reconcile / to-validate / who-says-what / readiness team) deliberately excluded.",
+  "dataSources": [
+    { "type": "document", "source": "07-andrew-harper-cfo.html; cfo-run-of-show.html — internal CFO pitch plan and run-of-show" },
+    { "type": "notes", "source": "meeting-notes/*.md — discovery with CRO, CDAIO, CTO, Data Architecture, Model Risk, Partner on 2026-09-17" }
+  ],
+  "sections": [
+    { "id": "s1", "title": "Cover", "producerNotes": "One-line takeaway; sets the anchoring outcome." },
+    { "id": "s2", "title": "The four questions a CFO asks", "producerNotes": "Trust / risk / efficiency / growth quadrant." },
+    { "id": "s3", "title": "The financial case", "producerNotes": "Figures are Aldwych's own, gathered in discovery. GBP 10.3M presented as the CDO's estimate." },
+    { "id": "s4", "title": "The fix pays for itself", "producerNotes": "Cost of action vs inaction; self-funding; capital freed; cost of delay." },
+    { "id": "s5", "title": "One connected estate, on Azure", "producerNotes": "Synapse/Purview gap; coexistence; one platform three outcomes." },
+    { "id": "s6", "title": "See it live + the funded first step", "producerNotes": "Demo storyboard and the ask." }
+  ]
+}
+</script>
+<style>
+  :root {
+    color-scheme: light dark;
+    --navy: #0b1a2b;
+    --navy2: #0f2942;
+    --ink: #0f172a;
+    --gold: #d4af37;
+    --gold-dim: #b8860b;
+    --sky: #29b5e8;
+    --paper: #f6f8fb;
+    --line: rgba(255,255,255,.14);
+    --muted: #9fb3c8;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Helvetica Neue", -apple-system, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #05101d;
+    color: #e8eef6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- deck / slide framing (16:9) ---------- */
+  .deck { width: 100%; }
+  .slide {
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    padding: clamp(28px, 4.2vw, 64px);
+    background:
+      radial-gradient(120% 90% at 12% 8%, var(--navy2) 0%, var(--navy) 46%, #081524 100%);
+    border: 1px solid var(--line);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .slide.active { display: flex; }
+  .slide::after {
+    content: "";
+    position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+    background: linear-gradient(var(--gold), var(--gold-dim));
+  }
+
+  /* kicker + slide titles */
+  .kicker {
+    font-size: clamp(11px, 1.1vw, 14px);
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+  h1.slide-h {
+    font-size: clamp(24px, 3.1vw, 44px);
+    line-height: 1.08;
+    margin: 0 0 4px;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: -.01em;
+  }
+  h2.slide-sub {
+    font-size: clamp(14px, 1.5vw, 20px);
+    color: var(--muted);
+    font-weight: 500;
+    margin: 6px 0 0;
+    line-height: 1.35;
+  }
+  .content { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+
+  /* ---------- cover ---------- */
+  .cover .brandline { display: flex; align-items: center; gap: 14px; margin-bottom: auto; }
+  .cover .mark {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: conic-gradient(from 210deg, var(--sky), #1e6fa8 60%, var(--sky));
+    box-shadow: 0 0 0 1px rgba(255,255,255,.12) inset;
+  }
+  .cover .brandtxt { font-size: 14px; letter-spacing: .06em; color: #cdd9e6; }
+  .cover .brandtxt b { color: #fff; }
+  .cover h1 {
+    font-size: clamp(30px, 4.6vw, 66px);
+    line-height: 1.03; margin: 0; color: #fff; font-weight: 800; letter-spacing: -.02em;
+  }
+  .cover h1 .em { color: var(--gold); }
+  .cover .lede {
+    font-size: clamp(15px, 1.7vw, 23px); color: #d7e2ee; max-width: 60ch;
+    margin: 22px 0 0; line-height: 1.4;
+  }
+  .cover .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+  .cover .who { font-size: clamp(13px,1.3vw,17px); color: #fff; }
+  .cover .who span { color: var(--muted); display: block; font-size: .82em; margin-top: 2px; }
+  .cover .partners { font-size: 12px; color: var(--muted); text-align: right; letter-spacing: .04em; }
+
+  /* ---------- quadrants ---------- */
+  .quad { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px,1.6vw,22px); }
+  .quad .cell {
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--gold);
+    border-radius: 12px;
+    padding: clamp(14px,1.7vw,22px);
+  }
+  .quad .q { font-size: clamp(14px,1.5vw,19px); font-weight: 700; color: #fff; margin: 0 0 6px; }
+  .quad .a { font-size: clamp(12.5px,1.25vw,16px); color: #c9d6e4; line-height: 1.4; margin: 0; }
+  .quad .a b { color: var(--gold); }
+
+  /* ---------- metric row ---------- */
+  .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px,1.6vw,20px); margin-bottom: clamp(14px,1.8vw,22px); }
+  .metric {
+    background: linear-gradient(180deg, rgba(212,175,55,.12), rgba(212,175,55,.03));
+    border: 1px solid rgba(212,175,55,.35);
+    border-radius: 12px; padding: clamp(12px,1.6vw,20px); text-align: center;
+  }
+  .metric .n { display: block; font-size: clamp(26px,3.4vw,48px); font-weight: 800; color: var(--gold); line-height: 1; letter-spacing: -.02em; }
+  .metric .l { display: block; font-size: clamp(11px,1.1vw,14px); color: #cdd9e6; margin-top: 8px; line-height: 1.3; }
+
+  /* ---------- tables / lists on slides ---------- */
+  table { border-collapse: collapse; width: 100%; }
+  .tbl th, .tbl td { border-bottom: 1px solid var(--line); padding: clamp(6px,.9vw,11px) 12px; text-align: left; vertical-align: top; font-size: clamp(12px,1.2vw,16px); }
+  .tbl th { color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: clamp(10px,1vw,12.5px); }
+  .tbl td { color: #d7e2ee; line-height: 1.35; }
+  .tbl td b { color: #fff; }
+  .tbl tr:last-child td { border-bottom: none; }
+  .note { font-size: clamp(11px,1.1vw,14px); color: var(--muted); margin-top: 12px; }
+
+  ul.clean { list-style: none; margin: 0; padding: 0; }
+  ul.clean li { position: relative; padding: clamp(7px,1vw,11px) 0 clamp(7px,1vw,11px) 30px; border-bottom: 1px dashed var(--line); font-size: clamp(13px,1.3vw,17px); color: #d7e2ee; line-height: 1.38; }
+  ul.clean li:last-child { border-bottom: none; }
+  ul.clean li::before { content: ""; position: absolute; left: 4px; top: calc(clamp(7px,1vw,11px) + .55em); width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+  ul.clean li b { color: #fff; }
+  ul.clean li .sub { color: var(--muted); }
+
+  /* two-column split */
+  .split { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(16px,2.2vw,34px); align-items: start; }
+  .panel { background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 12px; padding: clamp(14px,1.8vw,22px); }
+  .panel h3 { margin: 0 0 12px; font-size: clamp(13px,1.3vw,17px); color: var(--gold); text-transform: uppercase; letter-spacing: .08em; }
+  .steps { counter-reset: step; list-style: none; margin: 0; padding: 0; }
+  .steps li { position: relative; padding: 0 0 clamp(11px,1.4vw,16px) 42px; font-size: clamp(13px,1.28vw,16.5px); color: #d7e2ee; line-height: 1.35; }
+  .steps li:last-child { padding-bottom: 0; }
+  .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: -2px; width: 28px; height: 28px; border-radius: 50%; background: var(--gold); color: #05101d; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+  .steps li b { color: #fff; }
+
+  .ask {
+    background: linear-gradient(180deg, rgba(41,181,232,.16), rgba(41,181,232,.04));
+    border: 1px solid rgba(41,181,232,.4); border-radius: 12px;
+    padding: clamp(14px,1.8vw,22px); font-size: clamp(13px,1.32vw,17px); color: #eaf4fb; line-height: 1.42;
+  }
+  .ask .lead { display: block; color: var(--sky); font-weight: 800; letter-spacing: .1em; text-transform: uppercase; font-size: clamp(11px,1.1vw,13px); margin-bottom: 8px; }
+  .ask b { color: #fff; }
+
+  .lead-in { font-size: clamp(13px,1.35vw,18px); color: #c9d6e4; margin: 0 0 clamp(12px,1.6vw,20px); line-height: 1.42; max-width: 74ch; }
+  .lead-in b { color: #fff; }
+
+  /* ---------- chrome: nav, counter, progress ---------- */
+  .chrome { position: fixed; z-index: 50; }
+  .counter { right: 18px; bottom: 14px; font-size: 13px; color: var(--muted); letter-spacing: .06em; }
+  .counter b { color: var(--gold); }
+  .hint { left: 18px; bottom: 14px; font-size: 12px; color: var(--muted); }
+  .hint kbd { background: rgba(255,255,255,.08); border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; font-family: inherit; color: #cdd9e6; }
+  .progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--sky), var(--gold)); width: 0; z-index: 60; transition: width .25s ease; }
+  .navbtn { position: fixed; top: 0; bottom: 0; width: 18%; z-index: 40; border: none; background: transparent; cursor: pointer; opacity: 0; }
+  .navbtn.prev { left: 0; } .navbtn.next { right: 0; }
+  .slabel { position: absolute; right: clamp(28px,4.2vw,64px); top: clamp(24px,3.4vw,52px); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+  .footer-tag { position: absolute; left: clamp(28px,4.2vw,64px); bottom: clamp(18px,2.4vw,34px); font-size: 11.5px; color: var(--muted); letter-spacing: .04em; }
+
+  /* ---------- print: one slide per page ---------- */
+  @media print {
+    @page { size: 1280px 720px; margin: 0; }
+    body { background: #fff; }
+    .chrome, .progress, .navbtn { display: none !important; }
+    .deck { width: auto; }
+    .slide { display: flex !important; max-width: none; width: 1280px; height: 720px; aspect-ratio: auto; page-break-after: always; break-after: page; border: none; }
+    .slide:last-child { page-break-after: auto; }
+  }
+
+  /* ---------- narrow screens: let slides stack & scroll ---------- */
+  @media (max-width: 720px) {
+    .slide { aspect-ratio: auto; min-height: 90vh; }
+    .quad, .metrics, .split { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ SLIDE 1 · COVER ============ -->
+  <section class="slide cover active" id="s1">
+    <div class="brandline">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="brandtxt"><b>Snowflake</b> &nbsp;on Azure &nbsp;·&nbsp; with Accenture</span>
+    </div>
+    <div class="content">
+      <h1>Trusted, auditable regulatory reporting<br><span class="em">in days, not weeks.</span></h1>
+      <p class="lede">Close the lineage gap that failed the audit &mdash; clear the FCA notice by Q4, unstick a &pound;340M SME loan book, and free regulatory capital &mdash; on one governed platform across all seven systems, without leaving Azure.</p>
+    </div>
+    <div class="foot">
+      <div class="who">Andrew Harper<span>Chief Financial Officer &middot; Aldwych Bank</span></div>
+      <div class="partners">Grounded in conversations across your bank<br>CRO &middot; CDAIO &middot; CTO &middot; Data Architecture &middot; Model Risk</div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 2 · THE FOUR QUESTIONS ============ -->
+  <section class="slide" id="s2">
+    <span class="slabel">01</span>
+    <p class="kicker">The CFO&rsquo;s lens</p>
+    <h1 class="slide-h">Four questions &mdash; answered</h1>
+    <div class="content">
+      <div class="quad">
+        <div class="cell">
+          <p class="q">Can I trust the numbers?</p>
+          <p class="a">End-to-end <b>column-level lineage</b> from every regulatory figure back to source &mdash; the BCBS&nbsp;239 gap the current estate can&rsquo;t close.</p>
+        </div>
+        <div class="cell">
+          <p class="q">Does this reduce business risk?</p>
+          <p class="a">Clears the FCA notice, removes the <b>&pound;35&ndash;55M</b> penalty tail, and puts model governance on one auditable foundation.</p>
+        </div>
+        <div class="cell">
+          <p class="q">Can we operate more efficiently?</p>
+          <p class="a">The three-week manual reporting cycle collapses toward days, freeing the <b>55%</b> of risk-engineering effort lost to legacy pipelines.</p>
+        </div>
+        <div class="cell">
+          <p class="q">Will this drive profitable growth?</p>
+          <p class="a">Unsticks the <b>&pound;340M</b> SME book and reinstates its model, frees capital to lend, and opens governed AI self-service inside two quarters.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-tag">Aldwych Bank &middot; CFO presentation</div>
+  </section>
+
+  <!-- ============ SLIDE 3 · THE FINANCIAL CASE ============ -->
+  <section class="slide" id="s3">
+    <span class="slabel">02</span>
+    <p class="kicker">Going high &middot; the financial case</p>
+    <h1 class="slide-h">Your own numbers</h1>
+    <div class="content">
+      <div class="metrics">
+        <div class="metric"><span class="n">&pound;340M</span><span class="l">SME loan book stuck in manual review</span></div>
+        <div class="metric"><span class="n">&pound;35&ndash;55M</span><span class="l">FCA penalty exposure avoided</span></div>
+        <div class="metric"><span class="n">&pound;4.2M<small style="font-size:.5em">/yr</small></span><span class="l">manual credit-review labour</span></div>
+      </div>
+      <div style="overflow-x:auto">
+      <table class="tbl">
+        <thead><tr><th style="width:52%">Lever</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Risk-engineering capacity lost to legacy pipelines</td><td><b>55%</b> of the team&rsquo;s week</td></tr>
+          <tr><td>Regulatory reporting cycle</td><td><b>3 weeks &rarr; days</b></td></tr>
+          <tr><td>Model reinstatement P&amp;L uplift</td><td><b>~&pound;10.3M</b> &nbsp;<span style="color:var(--muted)">(CDO&rsquo;s estimate)</span></td></tr>
+          <tr><td>Regulatory capital tied up under Basel IV</td><td>freed by traceable lineage &rarr; <b>redeployed to lending</b></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">The two rock-solid figures &mdash; <b style="color:#fff">&pound;4.2M/yr</b> labour and the <b style="color:#fff">&pound;35&ndash;55M</b> penalty tail &mdash; anchor the case; the &pound;340M book is what the fix unsticks.</p>
+    </div>
+    <div class="footer-tag">Aldwych Bank &middot; CFO presentation</div>
+  </section>
+
+  <!-- ============ SLIDE 4 · THE FIX PAYS FOR ITSELF ============ -->
+  <section class="slide" id="s4">
+    <span class="slabel">03</span>
+    <p class="kicker">Cost of action vs inaction</p>
+    <h1 class="slide-h">The fix pays for itself</h1>
+    <div class="content">
+      <p class="lead-in">Judge it as <b>total cost</b>, not licence-versus-licence &mdash; the whole current estate against one governed platform.</p>
+      <div style="overflow-x:auto">
+      <table class="tbl">
+        <tbody>
+          <tr><td style="width:24%"><b>Consolidate</b></td><td>Seven systems, plus &pound;4.2M/yr manual labour and maintenance drag, collapse into one platform &mdash; retiring duplicate infrastructure and licences.</td></tr>
+          <tr><td><b>Self-funding</b></td><td>The first step is largely a reallocation of budget already set aside &mdash; payback in <b>months, not years</b> against &pound;4.2M/yr recovered.</td></tr>
+          <tr><td><b>Capital freed</b></td><td>Traceable lineage lets you retire conservative Basel&nbsp;IV assumptions &mdash; <b>capital redeployed to lending</b>.</td></tr>
+          <tr><td><b>Cost of delay</b></td><td>Every month the model stays off &asymp; <b>~&pound;0.86M</b> foregone P&amp;L + <b>~&pound;0.35M</b> labour. Waiting isn&rsquo;t free.</td></tr>
+          <tr><td><b>Avoided rework</b></td><td>One foundation satisfies BCBS&nbsp;239, PRA&nbsp;SS1/23 and Basel&nbsp;IV &mdash; not three separate remediation projects later.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+    <div class="footer-tag">Aldwych Bank &middot; CFO presentation</div>
+  </section>
+
+  <!-- ============ SLIDE 5 · ONE CONNECTED ESTATE ============ -->
+  <section class="slide" id="s5">
+    <span class="slabel">04</span>
+    <p class="kicker">Going wide &middot; one platform, on Azure</p>
+    <h1 class="slide-h">One connected estate &mdash; not a point fix</h1>
+    <div class="content">
+      <div class="split">
+        <div>
+          <ul class="clean">
+            <li><b>The gap:</b> the current tooling tracks assets, not the transformation-level <b>column lineage</b> BCBS&nbsp;239 demands &mdash; the same gap that failed the audit.</li>
+            <li><b>Snowflake on Azure</b> closes it now, preserving your Microsoft commitment and Azure consumption. <span class="sub">Coexistence, not rip-and-replace.</span></li>
+            <li><b>Seven fragmented systems &rarr; one governed platform</b>, with the ring-fenced estates kept as separate tenants, unified only via governed data sharing &mdash; not merged.</li>
+            <li><b>Accenture co-delivers</b>, bridging the legacy estate and de-risking against another mid-stream failure.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>One foundation, three outcomes</h3>
+          <ul class="clean">
+            <li><b>Regulatory reporting</b><br><span class="sub">BCBS 239 + Basel IV capital relief</span></li>
+            <li><b>Model reinstatement</b><br><span class="sub">FCA / PRA SS1/23 governance</span></li>
+            <li><b>Governed AI self-service</b><br><span class="sub">plain-English queries for execs, analytics for the team</span></li>
+          </ul>
+          <p class="note" style="margin-top:14px">Adjacent upside: AML / fraud analytics and an enterprise knowledge graph for AI trust.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-tag">Aldwych Bank &middot; CFO presentation</div>
+  </section>
+
+  <!-- ============ SLIDE 6 · SEE IT LIVE + THE ASK ============ -->
+  <section class="slide" id="s6">
+    <span class="slabel">05</span>
+    <p class="kicker">Going fast &middot; proof, then the ask</p>
+    <h1 class="slide-h">See it live &mdash; then a funded first step</h1>
+    <div class="content">
+      <div class="split">
+        <div class="panel">
+          <h3>Live demo &mdash; four clicks</h3>
+          <ol class="steps">
+            <li>Start on a regulatory figure in <b>Sigma</b>, your chosen BI.</li>
+            <li>Click through <b>column-level lineage</b> back to source &mdash; the exact thing the current estate can&rsquo;t do, shown live.</li>
+            <li>Flip to the <b>reinstated SME credit model</b> with provenance and human-in-the-loop review.</li>
+            <li>Ask a <b>plain-English question</b> a CFO would actually ask &mdash; under strict access control.</li>
+          </ol>
+        </div>
+        <div>
+          <div class="ask">
+            <span class="lead">The funded first step</span>
+            Extend the existing proof-of-concept to cover <b>retail and investment banking</b> with column-level lineage, source&rarr;BI, on Snowflake-on-Azure &mdash; reinstating the SME credit model.
+            <br><br>
+            <b>Funded from budget already ring-fenced</b>, delivered inside <b>two quarters</b>, ahead of Q4. Proof before commitment.
+          </div>
+          <p class="note">Speed proof: a live HSBC reference on Snowflake + Sigma; governance that stands up fast; prior delivery at comparable global banks.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-tag">Aldwych Bank &middot; CFO presentation</div>
+  </section>
+
+</div>
+
+<!-- chrome -->
+<button class="navbtn prev" id="prev" aria-label="Previous slide"></button>
+<button class="navbtn next" id="next" aria-label="Next slide"></button>
+<div class="chrome counter" id="counter"><b>1</b> / 6</div>
+<div class="chrome hint">&larr; &rarr; or <kbd>Space</kbd> to advance &middot; <kbd>F</kbd> fullscreen &middot; <kbd>P</kbd> print</div>
+
+<script>
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var total = slides.length;
+    var i = 0;
+    var counter = document.getElementById('counter');
+    var progress = document.getElementById('progress');
+
+    function show(n) {
+      i = Math.max(0, Math.min(total - 1, n));
+      slides.forEach(function (s, idx) { s.classList.toggle('active', idx === i); });
+      counter.innerHTML = '<b>' + (i + 1) + '</b> / ' + total;
+      progress.style.width = ((i + 1) / total * 100) + '%';
+      if (location.hash !== '#' + slides[i].id) {
+        history.replaceState(null, '', '#' + slides[i].id);
+      }
+      window.scrollTo(0, 0);
+    }
+    function next() { show(i + 1); }
+    function prev() { show(i - 1); }
+
+    document.getElementById('next').addEventListener('click', next);
+    document.getElementById('prev').addEventListener('click', prev);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+      else if (e.key === 'Home') { show(0); }
+      else if (e.key === 'End') { show(total - 1); }
+      else if (e.key === 'f' || e.key === 'F') {
+        if (!document.fullscreenElement) { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+        else { document.exitFullscreen && document.exitFullscreen(); }
+      }
+      else if (e.key === 'p' || e.key === 'P') { window.print(); }
+    });
+
+    // deep-link by hash (#s3)
+    var start = 0;
+    if (location.hash) {
+      var idx = slides.findIndex(function (s) { return '#' + s.id === location.hash; });
+      if (idx >= 0) start = idx;
+    }
+    show(start);
+  })();
+</script>
+
+</body>
+</html>
