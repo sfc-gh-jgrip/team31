@@ -97,6 +97,13 @@ footer { margin-top:30px; font-size:12px; color:var(--muted); border-top:1px sol
 </ul>
 </div>
 
+<h2>The regulations behind resilience &mdash; DORA / APRA / SOX</h2>
+<div class="card">
+<p><b>DORA (Digital Operational Resilience Act)</b><br>The EU's rule, in force since January 2025, that financial firms must keep running through and recover quickly from IT disruptions, including a full data-platform outage. Snowflake meets it because its cross-region and cross-cloud replication brings back the data, the pipelines, and the governance policies in the failover region (99.9% SLA) — so a regulated workload survives a disaster intact rather than coming up as a dark, ungoverned copy.</p>
+<p><b>APRA (CPS 230 / CPS 234)</b><br>Australia's banking regulator requires tested business-continuity and disaster-recovery arrangements plus strong protection of sensitive data. Snowflake satisfies this with a simple, testable failover where masking and row-access controls automatically re-enforce in the secondary region — so the recovery copy is provably as governed and secure as the primary.</p>
+<p><b>SOX (Sarbanes-Oxley Act)</b><br>The US law holding a company accountable for the accuracy and integrity of its financial reporting — proving who touched financial data and how a reported number was produced. Snowflake solves this with a single consolidated audit trail (<code>ACCESS_HISTORY</code>) and object/column lineage, so accountability is unambiguous and the evidence is reconstructable in one place rather than pieced together across scattered logs.</p>
+</div>
+
 <h2>Meeting objective</h2>
 <div class="card">Neutralise the incumbent objection and frame coexistence on Azure, not rip-and-replace. Nothing proceeds without his endorsement. Understand his Microsoft politics, his security/resilience bar, and the sequencing that lets Charlotte publish on time. Bring a concrete, demoable architecture — this is the weakest &#x27;capability&#x27; slot to strengthen.</div>
 
