@@ -40,21 +40,22 @@ footer { margin-top:24px; font-size:12px; color:var(--muted); border-top:1px sol
 
 <div class="hdr"><h1>CFO meeting &mdash; run-of-show</h1><div class="role">Andrew Harper, CFO &middot; Aldwych Bank &middot; ~20 min, one-way pitch + demo, he probes a couple of objections</div></div>
 
-<div class="take">Takeaway to land: &ldquo;Snowflake on Azure closes the lineage gap that failed your audit &mdash; reinstating a &pound;10.3M model and clearing the FCA notice by Q4 &mdash; one governed platform across all seven systems, funded from budget you&rsquo;ve already ring-fenced. Every number came from your own people today.&rdquo;</div>
+<div class="take">Takeaway to land: &ldquo;Snowflake on Azure closes the lineage gap that failed your audit &mdash; unsticking a &pound;340M SME loan book, clearing the FCA notice by Q4, and freeing capital &mdash; one governed platform across all seven systems, funded from budget you&rsquo;ve already ring-fenced. Every number came from your own people today.&rdquo;</div>
 
 <h2>The three headline numbers</h2>
 <div class="grid">
-<div class="metric"><span class="n">&pound;10.3M</span><span class="l">P&amp;L from model reinstatement</span></div>
+<div class="metric"><span class="n">&pound;340M</span><span class="l">SME book stuck in manual review</span></div>
 <div class="metric"><span class="n">&pound;35&ndash;55M</span><span class="l">FCA penalty exposure avoided</span></div>
 <div class="metric"><span class="n">&pound;4.2M/yr</span><span class="l">manual-review labour</span></div>
 </div>
+<p style="font-size:13px;color:var(--muted)">Plus the CDO&rsquo;s own estimate: ~&pound;10.3M P&amp;L if the model is reinstated (present as her figure, not ours).</p>
 
 <h2>Run order &mdash; who says what</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>Min</th><th>Segment</th><th>Lead</th><th>Point to land</th></tr></thead>
 <tbody>
 <tr><td>0&ndash;2</td><td>Open, together</td><td class="who">Accenture + SF</td><td>Grounded in 8 conversations across your bank today.</td></tr>
-<tr><td>2&ndash;7</td><td>Going High</td><td class="who">SF lead + Value Advisory</td><td>Cost of inaction in their numbers; funded first step.</td></tr>
+<tr><td>2&ndash;7</td><td>Going High</td><td class="who">SF lead + Value Advisory</td><td>&pound;340M book + &pound;4.2M/yr + penalty; cost-of-action vs inaction &amp; payback; funded first step.</td></tr>
 <tr><td>7&ndash;11</td><td>Going Wide</td><td class="who">SF lead</td><td>Synapse/Purview gap &rarr; Snowflake on Azure; one platform, three outcomes.</td></tr>
 <tr><td>11&ndash;16</td><td>Going Fast (live demo)</td><td class="who">SF SE</td><td>Column-level lineage source&rarr;BI, live; reinstated model; Cortex NLQ.</td></tr>
 <tr><td>16&ndash;20</td><td>Objections + next step</td><td class="who">All</td><td>Handle 2&ndash;3; calendarize the funded first step.</td></tr>
@@ -63,31 +64,32 @@ footer { margin-top:24px; font-size:12px; color:var(--muted); border-top:1px sol
 <h2>Demo &mdash; 4 clicks</h2>
 <ol>
 <li>Regulatory figure in <b>Sigma</b>.</li>
-<li><b>Horizon + Select Star</b>: column-level lineage back to <b>Oracle/DB2</b> source &mdash; what Purview can&rsquo;t do.</li>
+<li><b>Horizon</b> (+ Select Star): column-level lineage back to <b>Oracle</b> source (DB2 on roadmap) &mdash; what Purview can&rsquo;t do. Run it live.</li>
 <li>Reinstated <b>SME credit model</b> with provenance + human-in-the-loop.</li>
 <li><b>Cortex</b> plain-English question under strict RBAC.</li>
 </ol>
-<p style="font-size:13px;color:var(--muted)">Speed proof: HSBC live ref (SF + Sigma); AML POC 3&ndash;5x in ~2 weeks, passed BCBS audit; out-of-the-box governance.</p>
+<p style="font-size:13px;color:var(--muted)">Speed proof: HSBC live ref (SF + Sigma); AML PoC 3&ndash;5x in ~2 weeks (partner-enabled, ran on another platform &mdash; upside, not native); governance stands up fast.</p>
 
 <h2>Funded first step (the ask)</h2>
-<p style="font-size:14px">Extend the POC to <b>retail + investment banking</b> with column-level lineage source&rarr;BI on Snowflake-on-Azure, reinstating the SME model &mdash; <b>funded from the &pound;2&ndash;3M ring-fenced budget</b> (CTO allocates), delivered within two quarters, ahead of Q4.</p>
+<p style="font-size:14px">Extend the PoC to <b>retail + investment banking</b> with column-level lineage source&rarr;BI on Snowflake-on-Azure, reinstating the SME model &mdash; <b>funded from budget already ring-fenced</b> (David&rsquo;s ~$1.8M end-Q2 + Sarah&rsquo;s &pound;2&ndash;3M), delivered within two quarters, ahead of Q4. Pays back in months; every month&rsquo;s delay &asymp; ~&pound;0.86M P&amp;L + ~&pound;0.35M labour.</p>
 
 <h2>If he pushes back</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>He asks</th><th>One-line answer</th></tr></thead>
 <tbody>
 <tr><td>Why not Fabric + Purview?</td><td>Purview = asset-level only; can&rsquo;t do the column lineage BCBS needs. Snowflake runs on Azure &mdash; keep Microsoft, get compliance.</td></tr>
-<tr><td>Cost / runaway consumption?</td><td>Budgets + spend-by-outcome; first step self-funds against &pound;10.3M + &pound;4.2M.</td></tr>
+<tr><td>Cost / runaway consumption?</td><td>Budgets + spend-by-outcome (incl. AI spend); first step self-funds against &pound;4.2M/yr recovered + the &pound;340M book unstuck.</td></tr>
 <tr><td>Migrations fail here.</td><td>Small funded POC, joint with Accenture, out-of-box governance, two quarters. Proof before commitment.</td></tr>
 <tr><td>Is it grounded?</td><td>Name Sarah, Charlotte, Priya, Marcus, David and James and their specific intel.</td></tr>
 </tbody></table></div>
 
 <h2>Don&rsquo;t trip on (reconcile first)</h2>
 <ul>
-<li>&pound;10.3M bps basis inconsistent &mdash; keep headline, firm the derivation.</li>
+<li>Anchor on &pound;340M + &pound;4.2M/yr + penalty; present &pound;10.3M as the CDO&rsquo;s estimate, not ours.</li>
 <li>Two budgets, not one: David&rsquo;s ~$1.8M (end-Q2) + Sarah&rsquo;s &pound;2&ndash;3M ring-fenced. Don&rsquo;t conflate.</li>
 <li>Andrew = CFO, Marcus = CTO (budget sign-off). Don&rsquo;t garble.</li>
-<li>AML/fraud = real upside (David met; PoC 3&ndash;5x, BCBS pass) &mdash; validate P&amp;L sizing.</li>
+<li>AML = partner-enabled (Relational AI); PoC ran on another platform &mdash; upside, not native. Validate sizing.</li>
+<li>Demo must run live; lead on Oracle (DB2 on roadmap). TCO/capital numbers need Value Advisory + Treasury.</li>
 </ul>
 
 <footer>Aldwych Bank &middot; CFO Challenge &middot; in-room run-of-show. Full detail: <a href="07-andrew-harper-cfo.html">07-andrew-harper-cfo.html</a>.</footer>
