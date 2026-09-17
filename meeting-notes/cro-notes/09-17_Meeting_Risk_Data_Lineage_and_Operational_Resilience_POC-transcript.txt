@@ -1,0 +1,283 @@
+
+00:00:00 Speaker 1
+I'm not, But all right. Hi Sarah
+00:00:10 Speaker 2
+Nice to meet you. My name is Cliff, Solutions engineer at Snowflake, With me Abhijit. She's also solutions engineer at Snowflake. The reason we're having this meeting today is the CFO asked us to to be working on making sure that we're.
+00:00:29 Speaker 2
+We can improve your P&L. A big component to the P&L is around you know the models, Aligning to regulation. It's tasked us to meet several, several members of the team.
+00:00:44 Speaker 2
+We had a chat with chief data officer. We had a chat with head of risk engineering. We've gotten very good insights, which I really want to share with you, and.
+00:00:59 Speaker 2
+And then we just understand from your perspective what's really useful, So that you can work together and create a positive experience for each other. So we, I understand what your current point of current challenge is. Making sure that your BCBS yes, Is executed, and you need to have a way to get that done. We have what's good, small. How do you get to go ahead to to make that happen?
+00:01:29 Speaker 2
+The second part is you know you want to make the service, Which means you know any new regulation that comes, You need the team to be very empowered and be able to do it you know within a few minutes, A few hours, rather than need to take weeks. We captured that, And based on the conversations that we had with the CDO as well as head of head of data engineering.
+00:01:58 Speaker 2
+We've understood that there is a technology challenge, technology challenges, and data problems. Not stopping you from coming here. That's what makes you miss your BCBS component. Yeah. So let me. So yeah. So it's definitely data lineage, but it's a lot more to that when it comes to compliance. Okay.
+00:02:27 Speaker 3
+The challenge with risk at a bank
+00:02:33 Speaker 3
+Fraud data lineage doesn't cut it. Microsoft has also done the same thing, But I'm just not confident that they can actually get the attribution. So my risk team and the model team, When they make a decision, We have to justify to auditors or show to auditors to find deep.
+00:02:53 Speaker 1
+That we understand what inputs are that drove that decision
+00:02:59 Speaker 3
+Which means that telling me it came from whatever source isn't good enough. I actually need it down to the attribute level.
+00:03:08 Speaker 3
+Understood.
+00:03:09 Speaker 2
+We we've understood that very clearly based on conversations we had with the the lead engineer. Yeah, they actually did accuse, and they're able to showcase that they that they could actually move the POC as well.
+00:03:23 Speaker 1
+Oh great!
+00:03:24 Speaker 2
+So we've already done that, exceptionally successful.
+00:03:28 Speaker 2
+Up to and they were able to actually prove to the attribute level, Showcase how data is moving. Great. From a technology point of view, We see that you know we've been able to tick that box. You know, from it's just one component of technology. I know that I really, it's a deal breaker for me. Not only that, but just some statistics around the UIF, They managed to you know.
+00:03:53 Speaker 2
+This also BCBS, but more into anti-money laundering, Which you know is under your umbrella. They're able to to get five x better AML identification, right? Yeah. Which is less risk exposure to you. Yeah, right. And they're able to do this in record time. So you know, it took them just two weeks to build up the system, Which is a very short amount of time compared to the amount of time that your team would actually do this.
+00:04:21 Speaker 2
+From scratch and we produce, And the reason to that is the team was empowered with technology to make this happen. Both from Snowflake, with our technology partners like Sigma to allow for self-service,
+00:04:37 Speaker 1
+So what you do have a chance to look at that?
+00:04:42 Speaker 3
+We did a we did a POC of Sigma. My team is happy with the tool, But when we did the POC, It only showed investment banking data. I can't make and risk a decision on half of my data, So we're happy with you know, Like you said, self-service.
+00:05:02 Speaker 1
+It's good to know that you've done the POC on finding the the attribute at least from an audit perspective.
+00:05:13 Speaker 3
+But really, when it comes to compliance, There's there's mapping, you know.
+00:05:20 Speaker 1
+Being able to say we can find where the number comes from
+00:05:23 Speaker 3
+But it also has to be in a context of operational resilience. So if I miss my FCA requirement, It puts additional pressure on level four with capital allocation. Yeah. So if we can't do that, then yeah,
+00:05:44 Speaker 3
+You know, it's fine. That's good to know that you you hit the the tick box. What I'm still just thinking about, You know, how my team works. Yeah, yeah.
+00:05:53 Speaker 4
+And what do you say about the FCA penalties? Have you paid any penalties for not being compliant?
+00:06:01 Speaker 1
+Not yet
+00:06:02 Speaker 3
+But there's thirty-five to fifty-five million up my end.
+00:06:05 Speaker 2
+Okay. Yeah. Yeah. You mentioned operational resilience. Talked about your team a little bit. Operational resilience in terms of being able to generate these reports in time or.
+00:06:18 Speaker 2
+Being able to withstand any downtime, For example, cloud region or something.
+00:06:25 Speaker 1
+Fair question.
+00:06:29 Speaker 3
+Downtime it is up to the CTO. Like he knows it's a system requirement, But it's his team. I don't really have to prove that. But it's more the way that our team works. So,
+00:06:42 Speaker 3
+Are we able to produce reports on time? It's three weeks to launch.
+00:06:46 Speaker 1
+Imagine the impact that time.
+00:06:49 Speaker 3
+Also, are we able to show the workflow of the risk decision? So where they're where they're getting information from, What they're doing, How they're analyzing it, And then how that then is feeding into reporting their risk decisions that they're taking. So that's the problem with like you know our team sits across a million Excel spreadsheets, A million different systems that everyone's on,
+00:07:13 Speaker 1
+And it doesn't where where they're making risk decisions.
+00:07:18 Speaker 3
+Now doesn't come back and doesn't show and surface in the tools that they're using, And so that's we're not making as good of risk decisions as we could be making, And there's a lot of impact to that for the businesses. Andrew and I were talking about it yesterday.
+00:07:35 Speaker 2
+Yeah, it's a it's good to be a governance issue. We can definitely talk about your past conversations with the chief data officer. She did mention the same. We'll work together on the pattern now.
+00:07:43 Speaker 1
+That will be welcome also.
+00:07:49 Speaker 2
+Reflect downstream to the the risk team as well. We've also understood that we should have a very common challenge.
+00:07:59 Speaker 4
+We have the P&L.
+00:08:00 Speaker 2
+She has the PRA. PRA. PRA. Yeah. Regulation measures she has to abide to. It all boils down to the same box, Which is you know data problems at the attribute level. I want to understand from your perspective.
+00:08:10 Speaker 1
+I want to get this very much.
+00:08:12 Speaker 2
+Understand from an organization point of view. It's a common problem.
+00:08:17 Speaker 2
+Are you willing to put your both of you to come together and run this as one project? Because the the challenge is, Don't you have one challenge that you're working on, And that needs to be solved? And second challenge.
+00:08:33 Speaker 3
+I have 2.
+00:08:36 Speaker 1
+3 million ring-fenced for the for the remediation.
+00:08:43 Speaker 3
+So that's all put aside, Agreed on with Andrew, and ready to ready to go. It just we're waiting on the platform decision. As soon as I get that platform decision, Then we're all set.
+00:08:54 Speaker 1
+But that 2
+00:08:56 Speaker 3
+3 million has to cover both fixes to things that get me that attribution and lineage problem, But also like the operations side. And I think that's where the CDO,
+00:09:13 Speaker 3
+CDO, and I have. Been discussing a lot because obviously their team is producing, Building the models. Yeah. But our team is using them. Yeah. And if we don't use them correctly, Then what happens is then I can't understand how much money I need to hold back to meet my capital requirements, How much we can. So yeah, it's it's been a bit challenging to to get everyone.
+00:09:42 Speaker 4
+How many models did you have to stop using because of this problem?
+00:09:46 Speaker 1
+I don't know.
+00:09:47 Speaker 3
+I'd have to ask my team.
+00:09:50 Speaker 3
+So it's less of stop using, And it's more we need to be able to.
+00:09:56 Speaker 1
+Our team needs to know that which models I should be using to to do what for what support for what processes,
+00:10:04 Speaker 3
+And then demonstrate how the outputs of that model changed our results. Risk is, you know, It's it's a bit of science. It's also a bit of art. There's a lot that goes into these decisions, And model output is just one piece of it. So, automating that would be amazing,
+00:10:23 Speaker 1
+But a little bit. You said that you know the position of the technologies will change, new inputs based on the results.
+00:10:41 Speaker 2
+For example, in the future, you will be able to showcase that the technology works. You will be able to showcase that you can meet those with much shorter record time. You know, you have short. You know, you have very tight timelines to get this done. You know, given that you know, you're short on time, are you able to influence the decision so that you can get that technology?
+00:11:10 Speaker 2
+We can get the technology stuff much earlier, much faster.
+00:11:13 Speaker 1
+Yeah,
+00:11:15 Speaker 1
+Chatted with Charlotte, who's been working at Microsoft.
+00:11:19 Speaker 3
+Chatted with Andrew, so ultimately it'll come down to Andrew to make the call of the budget allocation. I mean, my budget's aside, but he needs to allocate the budget for some of the platform fixes, And then I can use my budget to.
+00:11:42 Speaker 3
+In terms of influence, I can, You know, I talk to a lot,
+00:11:46 Speaker 1
+A lot of the other executives. I mentioned we have a POC,
+00:11:52 Speaker 3
+Which is good to know. So that checks off a little bit of that urgency because I've been panicking. Q4 is around the corner. Yeah. But I, I think I really want to understand.
+00:12:08 Speaker 3
+What this means for how we function as a risk department, you know, Like okay, we can meet the lineage requirements, But what does what does that actually look like for me when I'm making decisions about how much money I should need to allocate for capital allocation, How much money I can invest,
+00:12:29 Speaker 3
+Also then what the impact, Potential impact or benefit that is moving.
+00:12:36 Speaker 2
+So you mentioned as you want to understand how that affects the team in the capital. At the most, aside from meeting the budget problems, You also need to understand how to allocate the budget.
+00:12:47 Speaker 1
+This is something you can work on more.
+00:12:50 Speaker 2
+Yeah. To ourselves, you know the investment is there's the scope of investments. There's also.
+00:13:03 Speaker 2
+Any implementation cost before the partner? Are you kind of working with a partner to help supplement your resources, Or you just?
+00:13:12 Speaker 1
+I don't know.
+00:13:14 Speaker 3
+I kind of I bring sense the budget, And then the tech team then confirms to me that they'll deliver or not deliver. I don't really. It's up to them, kind of who they want to work with and how they want to go about it. I just need it done in that budget. Yeah. Okay.
+00:13:30 Speaker 4
+Okay. So. I think so far, As Elena Torres, I think the director in David's head of engineering team, She completed a prototype, And then it was like 3x, 5x more than like it was a good result and good metrics to go with. But as a next step, Like what we should like, Because you mentioned you also want to derive metrics by yourself, So would you like to see a demo? Should we extend a POC scope? Like what what.
+00:14:00 Speaker 4
+Ideally, would you like to move as the next step? Because we are also conscious that we need to move fast.
+00:14:06 Speaker 3
+Yeah. So this is what I agree on with Andrew. If you can show that you have both retail and investment banking data,
+00:14:15 Speaker 1
+Both in Sigma
+00:14:18 Speaker 3
+That I can access and see the lineage. I know you've done a POC, But I just think you know that my risk team can do it.
+00:14:24 Speaker 1
+And if you can show
+00:14:26 Speaker 3
+Like I mentioned, what that workflow looks. Like for someone in my team, In a way that meets operational resilience requirements,
+00:14:33 Speaker 2
+Then I'm pretty happy. Okay. Yeah. It was mentioned on the two enterprises they discussed. I mentioned that you know you want to have Azure, to ones, yeah, all that, enterprise. Does that affect any?
+00:14:47 Speaker 3
+Will that be going against?
+00:14:58 Speaker 3
+No,
+00:15:04 Speaker 3
+Any recipe needs to be able to see across.
+00:15:08 Speaker 3
+That being said, We definitely need to make sure that it's only the recipe or only the right people with access that can that can see that data for sure.
+00:15:18 Speaker 3
+But so far, that hasn't seemed to be a big problem.
+00:15:22 Speaker 2
+That's something we can definitely work with.
+00:15:26 Speaker 2
+Do you have any questions for us?
+00:15:44 Speaker 3
+Yeah.
+00:15:50 Speaker 3
+One of the things we noticed with Sigma. Is it gets us to a certain point with data lineage,
+00:15:59 Speaker 3
+But like I said, it's still sometimes hard to take down into for our risk team to understand what's influencing that model output.
+00:16:08 Speaker 1
+You know
+00:16:12 Speaker 1
+See, okay, this the this the number that's that's feeding the model,
+00:16:18 Speaker 3
+And here's here's the output. Here's how this stuff applies everything.
+00:16:21 Speaker 1
+So that's one pain point.
+00:16:31 Speaker 4
+I mean, like I can quickly show you, Like this is just the example of like how you trace lineage in Snowflake. Like, if you have a column, You check, and then you see this. This could be Sigma, this could be Power BI, This could be Tableau, And then you see the model dependency on that column, And you can trace it all the way from source till the consumption.
+00:16:52 Speaker 3
+And that doesn't just go down to the table.
+00:16:55 Speaker 4
+Yes, yes, it does go. So this is like a table, And this these are like the columns. Yeah, yeah.
+00:17:00 Speaker 1
+You can also map back to the source table.
+00:17:05 Speaker 4
+So it started with PostgreSQL, And from PostgreSQL, so this and it's automated.
+00:17:09 Speaker 1
+Meaning, no development possible,
+00:17:11 Speaker 2
+Which means it comes from PostgreSQL to all activities.
+00:17:22 Speaker 2
+It's funny being at the end because you guys know so much more than we do. Really nice job on setting up. So.
+00:17:52 Speaker 3
+Who we've met with. Here's what we know.
+00:17:56 Speaker 1
+Can you like? Can you confirm?
+00:17:58 Speaker 3
+So that is that's excellent because I didn't feel like I had to be explained what I'm looking for from.
+00:18:05 Speaker 1
+So like, give me a chance to breathe or like respond to things. Nitpicky, but other than that,
+00:18:11 Speaker 3
+That is absolutely like that's the best that I've seen all day in terms of making me feel like I don't have to tell.
+00:18:21 Speaker 1
+Good job on tying it back and digging a little bit into value.
+00:18:29 Speaker 3
+There's one more value number that you just have to dig a little bit further for
+00:18:33 Speaker 1
+But you got the main value number.
+00:18:37 Speaker 3
+So when someone gets a number, it's like I've got my number. Try and follow up or understand.
+00:18:49 Speaker 3
+Understand some of the drivers behind that. People won't always tell you everything off the bat.
+00:18:56 Speaker 1
+You kind of have to earn a little trust.
+00:18:59 Speaker 3
+So feel free to just dig a little bit more and see what might be underneath some of the things that a business person will tell you.
+00:19:10 Speaker 3
+Telling me that the POC successful is helpful could have. Probably done that to bring that up a little bit more forward, But then I would have spent more time on asking me about the operational resiliency workflow, So that if you you demo to Andrew,
+00:19:35 Speaker 1
+It's not just okay we've got this lineage.
+00:19:40 Speaker 3
+You do need to show that
+00:19:42 Speaker 1
+But it's actually then how you're turning the risk function from.
+00:19:48 Speaker 3
+Like reactive, Proactive, and then what are the what's the what's there's a cost savings side, But then what's the revenue value there?
+00:19:59 Speaker 1
+Which then I can mention a little bit like AMO and stuff that's more risk.
+00:20:03 Speaker 3
+Okay, I understand where I can where I can invest and make it a little bit more specific of like oh I I know that this type of investment will have this amount of risk.
+00:20:17 Speaker 1
+Then I can potentially make different investment choices with the bank,
+00:20:21 Speaker 3
+So there's a revenue upside.
+00:20:23 Speaker 1
+Yeah. So kind of thinking, And then also spending more time on like what else beyond Sigma.
+00:20:38 Speaker 3
+So Sigma is definitely a good demo,
+00:20:41 Speaker 1
+But you know, Talking through a little.
+00:20:45 Speaker 3
+Dashboarding won't be everything.
+00:20:46 Speaker 1
+It's important for you.
+00:20:48 Speaker 3
+So talking through some of the other how you're feeding into other parts, But you don't have to talk like those are questions you can ask.
+00:20:55 Speaker 1
+But you know
+00:20:58 Speaker 3
+Like a little bit.
+00:20:59 Speaker 1
+Okay, if we've solved it for the POC,
+00:21:04 Speaker 3
+Then asking questions about like how me and my life, My recipient's life would change. Yeah. Ah, so is this interest report? Is it is it hard for when you're talking to Andrew? When your team is when your team is working with these types of like I think you mentioned inputs all the way through model outputs like how are they then using those numbers combined with what other kinds of data so just pick a little bit more yeah yeah I mean overall you guys did did super well I mean just just a little yeah no no I I agree don't be afraid personally for me I need to build the FSI knowledge.
+00:21:42 Speaker 4
+I come from a commercial background, So it's like every like manufacturing is bad, Climate tech is bad, Like the FSI is bad. So this is the first time I'm diving deep into the FSI, This regulatory measure, But yeah, it's been a great learning.
+00:22:00 Speaker 3
+Yeah. Yeah, you know, you guys, You did great. You made me feel like there's a conversation. You positioned, yeah, you positioned yourself well. Yes, having expertise, So I trusted you and what you were saying, Which is really nice. Just don't be afraid to ask a little bit of the, Dig a little bit on some of the value outputs, And don't be afraid to talk about. It's it's like getting get me excited about then what I can do now. You know, like okay, we've solved your problem.
+00:22:32 Speaker 3
+Let's talk a little bit about all these other things that you could be doing, Like transforming your resume, And then maybe pull in a customer reference too. Yes. Yes.
+00:22:43 Speaker 3
+Two. Two. But no. Overall, overall, great. The The best, The most important thing that you nailed was coming in with a hypothesis.
+00:22:56 Speaker 4
+Yeah. Thank you so much.
+00:22:57 Speaker 3
+That was great feedback. Appreciate you. Good luck to you.
