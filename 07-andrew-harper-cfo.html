@@ -6,14 +6,12 @@
 <script type="application/json" id="snowflake-report-metadata">
 {
   "generated": "2026-09-17",
-  "intent": "CFO pitch skeleton for Andrew Harper (CFO) \u2014 Aldwych Bank; Going High/Wide/Fast",
+  "intent": "CFO pitch plan for Andrew Harper (CFO) — Aldwych Bank; Going High/Wide/Fast, grounded in discovery",
   "dataSources": [
-    {
-      "type": "document",
-      "source": "aldwych_se_briefing.pdf; Office of the CFO Outcome Selling Playbook.PDF; Selling to the Office of the CFO - Field Enablement.PDF"
-    }
+    { "type": "document", "source": "aldwych_se_briefing.pdf; Office of the CFO Outcome Selling Playbook.PDF; Selling to the Office of the CFO - Field Enablement.PDF" },
+    { "type": "notes", "source": "meeting-notes/*.md — CRO, CDAIO, CTO, Data Architecture, Partner discovery on 2026-09-17" }
   ],
-  "producerNotes": "SKELETON ONLY \u2014 to be regenerated after discovery. All \u00a3 figures are illustrative placeholders flagged 'to validate' and must be firmed up with Value Advisory + real discovery numbers."
+  "producerNotes": "Grounded in real discovery numbers gathered 2026-09-17 (P&L £10.3M, labour £4.2M/yr, penalty £35-55M, 55% pipeline toil, £2-3M ring-fenced budget). Four figures flagged in the 'Reconcile before we walk in' box still need firming up with Value Advisory. Regenerate if numbers change."
 }
 </script>
 <style>
@@ -31,19 +29,8 @@ a { color: light-dark(#2563eb,#60a5fa); }
 h2 { font-size:16px; text-transform:uppercase; letter-spacing:.04em; margin:26px 0 10px; color: light-dark(#0f172a,#f1f5f9); border-bottom:2px solid var(--accent); padding-bottom:4px; }
 h3 { font-size:14px; margin:16px 0 6px; }
 .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
-.opener { font-style:italic; border-left:4px solid var(--accent); }
-.q { margin:10px 0; padding:10px 12px; border:1px solid var(--line); border-radius:8px; background:var(--card); }
-.q .grp { font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); }
-.q .txt { margin:3px 0; font-weight:600; }
-.q .listen { font-size:13px; color:var(--muted); }
-.q .listen b { color:var(--accent); font-weight:600; }
-.star::before { content:"\2605 "; color:var(--accent); }
-.badge { display:inline-block; font-size:10px; font-weight:700; color:#fff; background:var(--accent); border-radius:4px; padding:1px 6px; margin-left:6px; vertical-align:middle; }
-.badge.tv { background:var(--tv); }
 .callout { background:light-dark(#fffbeb,#1f2937); border:1px solid var(--accent); border-radius:10px; padding:12px 16px; }
 .callout .lead { font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
-.playback { background:light-dark(#eff6ff,#0f1e33); border:1px dashed var(--accent); border-radius:10px; padding:12px 16px; font-style:italic; }
-.carry { background:light-dark(#f0fdf4,#0f1f17); border:1px solid var(--line); border-left:4px solid #16a34a; border-radius:8px; padding:10px 14px; font-size:14px; }
 .tvnote { color:var(--tv); font-weight:600; font-size:13px; }
 .table-wrap { overflow-x:auto; }
 table { border-collapse:collapse; width:100%; }
@@ -51,125 +38,103 @@ th,td { border:1px solid var(--line); padding:8px 10px; text-align:left; vertica
 th { background:light-dark(#f3f4f6,#1f2937); font-weight:600; }
 ul.exit { list-style:none; padding:0; }
 ul.exit li { padding:6px 0 6px 26px; position:relative; border-bottom:1px dashed var(--line); }
-ul.exit li::before { content:"\2610"; position:absolute; left:0; color:var(--accent); font-size:18px; line-height:1; }
-.debrief { font-size:14px; }
+ul.exit li::before { content:"\2713"; position:absolute; left:0; color:#16a34a; font-size:16px; line-height:1.2; font-weight:700; }
 .pill { display:inline-block; font-size:11px; font-weight:700; color:#fff; background:var(--accent); border-radius:999px; padding:2px 10px; margin-right:6px; }
 footer { margin-top:30px; font-size:12px; color:var(--muted); border-top:1px solid var(--line); padding-top:10px; }
-@media print { body { background:#fff; } .nav { display:none; } .card,.q,.callout,.hdr,.playback,.carry { break-inside:avoid; } }
-
-
 :root { --accent: #0f172a; --gold:#b8860b; }
-.skeleton { background:light-dark(#fef3c7,#3b2f0b); border:1px solid var(--gold); color:light-dark(#7c5e00,#fde68a); border-radius:8px; padding:10px 14px; font-size:13px; font-weight:600; margin-bottom:18px; }
+.reconcile { background:light-dark(#fef3c7,#3b2f0b); border:1px solid var(--gold); color:light-dark(#7c5e00,#fde68a); border-radius:8px; padding:12px 16px; font-size:13px; margin-bottom:18px; }
+.reconcile b { color:light-dark(#92400e,#fbbf24); }
 .gw { border-left:8px solid var(--gold); }
 .q4 { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; }
 .q4 .c { border:1px solid var(--line); border-radius:8px; padding:10px 12px; background:var(--card); }
 .q4 .c b { color:var(--gold); }
+.big { font-size:22px; font-weight:800; color:light-dark(#0f172a,#f1f5f9); }
+@media print { body { background:#fff; } .nav { display:none; } .card,.callout,.reconcile { break-inside:avoid; } }
 </style></head><body>
-<div class="nav"><a href="index.html">&larr; All sheets</a><a href="01-james-obrien-partner.html">O’Brien</a><a href="02-sarah-mitchell-cro.html">Mitchell</a><a href="03-charlotte-davies-data-architecture.html">Davies</a><a href="04-priya-mehta-cdaio.html">Mehta</a><a href="05-marcus-okafor-cto.html">Okafor</a><a href="06-david-chen-model-risk.html">Chen</a></div>
-<div class="hdr gw"><div><span class="letter" style="background:var(--gold)">&starf;</span><span class="tag" style="color:var(--gold)">CFO · the decisive meeting</span></div>
-<h1>Andrew Harper</h1><div class="role">Chief Financial Officer · speaks capital, regulatory risk and results</div></div>
+<div class="nav"><a href="index.html">&larr; All sheets</a><a href="cfo-run-of-show.html"><b>Run-of-show &starf;</b></a><a href="01-james-obrien-partner.html">O&rsquo;Brien</a><a href="02-sarah-mitchell-cro.html">Mitchell</a><a href="03-charlotte-davies-data-architecture.html">Davies</a><a href="04-priya-mehta-cdaio.html">Mehta</a><a href="05-marcus-okafor-cto.html">Okafor</a><a href="06-david-chen-model-risk.html">Chen</a></div>
 
-<div class="skeleton">SKELETON — to be regenerated after discovery. Every &pound; figure below is an <b>illustrative placeholder marked TO VALIDATE</b>; firm them up with Value Advisory and the real numbers you gather today (Sarah's capital/labour figures, David's maintenance burden).</div>
+<div class="hdr gw"><div><span class="letter" style="background:var(--gold)">&starf;</span><span class="tag" style="color:var(--gold)">CFO &middot; the decisive meeting</span></div>
+<h1>Andrew Harper</h1><div class="role">Chief Financial Officer &middot; speaks capital, regulatory risk and results</div></div>
 
-<h2>From the pre-briefing</h2>
-<div class="card">
-<p><b>★ CFO</b></p>
-<p><b>WHO</b><br>The CFO. Speaks the language of capital, regulatory risk and results. Finite attention — every decision ultimately lands with him.</p>
-<p><b>WHY THEY MATTER</b><br>The final conversation is with Andrew. Everything you learn and recommend needs to land in his language: what it means for capital and P&amp;L, what it costs, what it saves, what the first funded step is.</p>
-<p><b>WHAT ANDREW CARES ABOUT</b></p>
-<ul>
-  <li>The regulatory exposure and what failing the deadlines would cost.</li>
-  <li>Why the bank's reporting is slow and what it's costing.</li>
-  <li>Concrete value, not platform features.</li>
-  <li>Whether he can trust that the recommendation is grounded in real contact with his people.</li>
-</ul>
-</div>
-
-<h2>Updated take &mdash; post-CDAIO meeting (2026-09-17)</h2>
-<div class="callout">
-<div class="lead">After the CDAIO meeting — quantified evidence for the CFO narrative</div>
-<ul>
-  <li>Hard numbers now sourced from a named stakeholder: ~£10.3M P&L uplift + ~£4.2M/yr manual cost, inside a two-quarter window.</li>
-  <li>Funded first step: reinstate the SME credit model via unified provenance — the evidence spine for "Going High."</li>
-</ul>
-</div>
-
-<h2>Compete &mdash; vs Databricks</h2>
-<div class="callout">
-<div class="lead">Compete vs Databricks — value and risk, not features</div>
-<ul>
-  <li>On Databricks the most regulated data is hardest to protect, audit, and govern → regulatory findings, capital add-ons, breach cost.</li>
-  <li>Snowflake: built-in governance, cross-cloud DR, and audit evidence a regulator can reason about — this protects the funded first step.</li>
+<div class="reconcile"><b>Reconcile before we walk in</b> &mdash; four items from today&rsquo;s notes to firm up with Value Advisory so a sharp CFO can&rsquo;t puncture them:
+<ul style="margin:6px 0 0">
+<li><b>The &pound;10.3M bps basis is inconsistent</b> across notes (108 bps vs 18 bps &mdash; neither cleanly yields &pound;10.3M). Keep the &pound;10.3M headline; firm up the derivation.</li>
+<li><b>Two separate budgets &mdash; don&rsquo;t conflate:</b> David Chen&rsquo;s Model Risk team has <b>~$1.8M expiring end of Q2</b>; Sarah (CRO) has <b>&pound;2&ndash;3M ring-fenced</b> for remediation (CTO allocates). Together they strengthen the funded-first-step case; the Q2 expiry vs Q4 deadline is a useful urgency lever.</li>
+<li><b>Naming:</b> Andrew Harper is the <b>CFO</b>; Marcus Okafor is the <b>CTO</b> and holds platform budget sign-off. One CRO note garbles this &mdash; don&rsquo;t repeat it in the room.</li>
+<li><b>Fraud/AML P&amp;L</b> is now better grounded (David&rsquo;s PoC: 3&ndash;5x detection, passed a BCBS audit) &mdash; still <i>validate the sizing</i> before presenting it as committed value.</li>
 </ul>
 </div>
 
 <h2>The one takeaway</h2>
-<div class="callout"><div class="lead">Leave Andrew believing</div>&ldquo;Snowflake can give Aldwych trusted, auditable regulatory reporting in days not weeks — satisfying the FCA and standing up under Basel IV — without ripping out Azure, and reinstating the AI models the CEO is waiting on. And the recommendation is grounded in real contact with your people.&rdquo;</div>
+<div class="callout"><div class="lead">Leave Andrew believing</div>&ldquo;Snowflake on Azure closes the exact lineage gap that failed your audit &mdash; reinstating a <b>&pound;10.3M</b> model and clearing the FCA notice by Q4 &mdash; as one governed platform across all seven systems, funded from budget you&rsquo;ve already ring-fenced. And every number here came from your own people today.&rdquo;</div>
 
-<h2>Answer the CFO's four questions</h2>
+<h2>Answer the CFO&rsquo;s four questions</h2>
 <div class="q4">
-<div class="c"><b>Can I trust the numbers?</b><br>Calculation-level lineage from every regulatory figure back toward source — the BCBS 239 gap, closed.</div>
-<div class="c"><b>Does this reduce business risk?</b><br>Clears the FCA notice, de-risks Basel IV capital, and puts model governance (SS1/23) on one auditable foundation.</div>
-<div class="c"><b>Can we operate more efficiently?</b><br>The ~3-week manual monthly cycle collapses toward days; engineering stops firefighting fragmented pipelines.</div>
-<div class="c"><b>Will this drive profitable growth?</b><br>Frees tied-up capital, reinstates AI models into the P&amp;L within the CEO's two-quarter window.</div>
+<div class="c"><b>Can I trust the numbers?</b><br>End-to-end <b>column-level lineage</b> from every regulatory figure back to source (Oracle/DB2) &mdash; the BCBS 239 gap Synapse/Purview can&rsquo;t close. Charlotte confirmed column-level is sufficient.</div>
+<div class="c"><b>Does this reduce business risk?</b><br>Clears the FCA notice, removes the <b>&pound;35&ndash;55M</b> penalty tail, and puts model governance on one auditable foundation.</div>
+<div class="c"><b>Can we operate more efficiently?</b><br>The ~3-week manual reporting cycle collapses toward days; frees the <b>55%</b> of risk-engineering effort lost to legacy pipelines.</div>
+<div class="c"><b>Will this drive profitable growth?</b><br>Reinstates the SME model for <b>~&pound;10.3M</b> P&amp;L and opens governed AI self-service within the CEO&rsquo;s two-quarter window.</div>
 </div>
 
-<h2><span class="pill" style="background:var(--gold)">GOING HIGH</span> Financial case &amp; cost of inaction</h2>
+<h2><span class="pill" style="background:var(--gold)">GOING HIGH</span> The financial case &mdash; their numbers, not ours</h2>
 <div class="card">
-<p>Sell in Andrew's language — capital, penalty exposure, and labour — not platform features. <span class="tvnote">All figures illustrative; validate with Value Advisory.</span></p>
+<p>Sell in Andrew&rsquo;s language &mdash; P&amp;L, penalty exposure, labour, capacity. Every figure below came from a named stakeholder today.</p>
 <div class="table-wrap"><table>
-<thead><tr><th>Cost-of-inaction lever</th><th>Illustrative frame (TO VALIDATE)</th><th>Source of the number</th></tr></thead>
+<thead><tr><th>Cost-of-inaction lever</th><th>Value</th><th>Source (named)</th></tr></thead>
 <tbody>
-<tr><td>Regulatory-reporting labour</td><td>~3 weeks/month manual across risk &amp; finance — order of <b>&pound;2–3m/yr</b> in loaded effort</td><td>Sarah + David: headcount &times; loaded cost &times; cycle share</td></tr>
-<tr><td>Basel IV capital drag</td><td>Untraceable risk data forces conservative RWA / a Pillar 2 add-on; even tens of bps on a bank this size ties up material capital — at ~10% cost of capital, <b>&pound;10s of m/yr</b></td><td>Sarah + Treasury: RWA base &times; add-on &times; cost of capital</td></tr>
-<tr><td>FCA escalation</td><td>Formal notice already live — exposure to financial penalty, supervised remediation, and business restriction</td><td>Sarah: what failing Q4 costs</td></tr>
-<tr><td>Stalled AI in the P&amp;L</td><td>Models paused = deferred revenue/efficiency the CEO is expecting within two quarters</td><td>Priya: value of the paused outcome</td></tr>
+<tr><td>SME credit-risk model reinstatement</td><td><b>~&pound;10.3M</b> P&amp;L uplift <span class="tvnote">(bps basis to reconcile)</span></td><td>Priya (CDAIO)</td></tr>
+<tr><td>Manual credit-review labour</td><td><b>~&pound;4.2M / yr</b></td><td>Priya / Sarah</td></tr>
+<tr><td>FCA penalty exposure (none paid yet)</td><td><b>&pound;35&ndash;55M</b> tail</td><td>Sarah (CRO)</td></tr>
+<tr><td>Risk-engineering capacity on legacy pipelines</td><td><b>55%</b> of the team&rsquo;s week</td><td>David Chen (Model Risk Eng)</td></tr>
+<tr><td>Regulatory reporting cycle</td><td><b>3 weeks &rarr; days</b></td><td>Sarah (CRO)</td></tr>
 </tbody></table></div>
-<p style="margin-top:10px"><b>Funded first step:</b> a 6–8 week lineage MVP on the retail risk estate — prove end-to-end traceability of one regulatory figure and collapse its reporting time — <b>funded from Sarah's approved-but-stuck remediation budget</b>. Named, scoped, and low-risk. <span class="tvnote">(Confirm budget + scope in discovery.)</span></p>
+<p style="margin-top:10px"><b>Funded first step:</b> extend the existing POC to cover <b>both retail and investment banking</b> with column-level lineage source&rarr;BI on Snowflake-on-Azure, reinstating the SME credit model &mdash; <b>funded from the &pound;2&ndash;3M ring-fenced remediation budget</b> (CTO allocates), delivered inside the two-quarter window, ahead of Q4. Named, scoped, self-funding.</p>
 </div>
 
-<h2><span class="pill" style="background:var(--gold)">GOING WIDE</span> One connected estate story</h2>
-<div class="card">Not a point fix — one governed platform across the whole estate:
-<ul>
-<li>Seven fragmented risk systems &rarr; <b>one governed platform on Azure</b>, coexisting with the Microsoft estate.</li>
-<li><b>Both ring-fenced estates unified for governance and lineage while kept legally separate</b> (separate accounts/roles) — not merged.</li>
-<li>The <b>same lineage foundation</b> serves regulatory reporting (BCBS 239 / Basel IV) <b>and</b> AI model reinstatement (SS1/23) — one investment, two regulators, two outcomes.</li>
-<li>Accenture co-delivers — bridging the legacy estate, not another failed migration.</li>
+<h2><span class="pill" style="background:var(--gold)">GOING WIDE</span> One connected estate, not a point fix</h2>
+<div class="card"><ul>
+<li><b>The real blocker:</b> Synapse + Purview give only asset/row-level lineage &mdash; not the transformation/query-level <b>column lineage</b> BCBS 239 demands. Microsoft&rsquo;s answer, Fabric + Purview, is the same ecosystem betting you&rsquo;ll wait. <span class="tvnote">Fabric decision currently sits at board level.</span></li>
+<li><b>Snowflake on Azure</b> closes the gap now &mdash; preserving the Microsoft commercial commitment and Azure consumption. Coexistence, not rip-and-replace.</li>
+<li><b>Seven fragmented systems &rarr; one governed platform</b>, with the two ring-fenced estates as <b>separate tenants</b> (legal separation preserved) unified only via governed <b>Direct Data Sharing</b> &mdash; not merged.</li>
+<li><b>One foundation, three outcomes:</b> BCBS 239 reporting, FCA/model-governance reinstatement, <b>and</b> Priya&rsquo;s bank-wide governed AI self-service (Cortex NLQ for execs + Sigma for analysts, both on Snowflake compute).</li>
+<li><b>Adjacent P&amp;L upside:</b> AML/fraud analytics and an enterprise knowledge graph for AI trust. <span class="tvnote">David&rsquo;s team ran the PoC (3&ndash;5x detection, passed a BCBS audit); validate the P&amp;L sizing.</span></li>
+<li><b>Accenture co-delivers</b> &mdash; bridging the legacy estate, de-risking against another mid-stream failure.</li>
 </ul></div>
 
-<h2><span class="pill" style="background:var(--gold)">GOING FAST</span> Live demo &amp; speed to value</h2>
-<div class="card">A live demo, not a description. Suggested storyboard (~5 min):
+<h2><span class="pill" style="background:var(--gold)">GOING FAST</span> A live demo, not a description</h2>
+<div class="card">Storyboard (~5 min):
 <ol>
-<li>Start on a regulatory figure in a governed Streamlit report.</li>
-<li>Click through the <b>Horizon lineage graph</b> back toward the source-record calculation — the trust story, live.</li>
-<li>Show the underlying dbt / dynamic-table transformation (calculation-level traceability). <span class="tvnote">Be precise: native = object/column-level; calc-level via modelled transforms — to validate vs FCA bar.</span></li>
-<li>Flip to a <b>reinstated AI model</b> with provenance + human-in-the-loop, and a spend-by-outcome cost view.</li>
+<li>Start on a regulatory figure in <b>Sigma</b> (their chosen BI).</li>
+<li>Click through <b>Horizon Context + Select Star</b> &mdash; column-level lineage from that figure back to the <b>Oracle / DB2</b> source. The exact thing Synapse/Purview can&rsquo;t do &mdash; the trust story, live.</li>
+<li>Flip to the <b>reinstated SME credit model</b> with provenance and human-in-the-loop review.</li>
+<li>Ask a plain-English question in <b>Cortex</b> that a CFO would actually ask, under strict RBAC.</li>
 </ol>
-Speed proof (operating examples, <b>not</b> guarantees): earnings reporting <b>~2 weeks &rarr; 48 hours</b>; close data-assembly <b>6–7 hrs reclaimed</b>. Frame as the pattern for collapsing Aldwych's 3-week cycle.</div>
+<b>Proof of speed:</b> <b>HSBC</b> live reference (Snowflake + Sigma, seen by Marcus); AML POC &mdash; <b>3&ndash;5x detection in ~2 weeks, passed a BCBS audit</b>; out-of-the-box governance with minimal configuration; prior GSIB/G20 bank delivery. Close with a <b>two-quarter roadmap</b> and the funded first step as the calendarized next step.</div>
 
-<h2>The readiness team (who's in the room)</h2>
+<h2>The readiness team (who&rsquo;s in the room)</h2>
 <div class="card"><ul>
-<li><b>Value Advisory</b> — owns the quantified value framework, ROI, and cost-of-inaction (firms up the &pound; figures above).</li>
-<li><b>Industry Specialist</b> — GSIB / UK ring-fenced-bank peer patterns for credibility.</li>
-<li><b>Accenture (James O'Brien)</b> — co-present; the partner is the CFO unlock.</li>
+<li><b>Value Advisory</b> &mdash; owns the value framework, ROI, and cost-of-inaction; firms up the &pound;10.3M derivation.</li>
+<li><b>Industry Specialist</b> &mdash; GSIB / UK ring-fenced-bank peer patterns (HSBC and comparable) for credibility.</li>
+<li><b>Accenture (James O&rsquo;Brien)</b> &mdash; co-present; the partner is the CFO unlock and the delivery-risk answer.</li>
 </ul></div>
 
 <h2>Objections Andrew will probe</h2>
-<div class="table-wrap"><table><thead><tr><th style="width:36%">He'll push on&hellip;</th><th>Respond</th></tr></thead><tbody>
-<tr><td>&ldquo;What does this actually cost — and won't consumption pricing run away?&rdquo;</td><td>Consumption model with budgets, resource monitors, and spend-by-outcome governance — every workload has a ceiling and an ROI. The funded first step is small and drawn from budget already approved.</td></tr>
-<tr><td>&ldquo;Why add to my Microsoft estate / won't this be a political fight?&rdquo;</td><td>Coexistence on Azure — consolidates seven silos, keeps Azure where it earns its keep. Marcus can approve on documented, defensible grounds; no vendor war.</td></tr>
-<tr><td>&ldquo;How do I know this recommendation is grounded, not a vendor pitch?&rdquo;</td><td>Name the stakeholders and the specific intelligence — Sarah's stuck budget and compliance bar, Charlotte's acceptance criteria, David's pipeline burden, Priya's paused models. This is built from your people, not a template.</td></tr>
+<div class="table-wrap"><table><thead><tr><th style="width:34%">He&rsquo;ll push on&hellip;</th><th>Respond</th></tr></thead><tbody>
+<tr><td>&ldquo;Why not just take Microsoft&rsquo;s Fabric + Purview? We&rsquo;re a Microsoft shop.&rdquo;</td><td>Purview tracks assets, not the transformation/query-level column lineage BCBS 239 requires &mdash; it&rsquo;s the same gap that failed your audit, and Fabric doesn&rsquo;t change that. Snowflake runs <i>on</i> Azure, so you keep Microsoft and get compliance now. Marcus has seen the proof and the HSBC reference.</td></tr>
+<tr><td>&ldquo;What does it cost, and won&rsquo;t consumption run away?&rdquo;</td><td>Consumption with budgets, resource monitors and spend-by-outcome governance &mdash; every workload has a ceiling and an ROI. The first step draws on your already-ring-fenced budget and pays for itself against &pound;10.3M + &pound;4.2M/yr.</td></tr>
+<tr><td>&ldquo;We&rsquo;ve had migrations fail here before &mdash; why is this different?&rdquo;</td><td>Small, funded, self-contained first step on an existing POC, delivered jointly with Accenture inside two quarters &mdash; out-of-the-box governance, not custom build. Proof before commitment.</td></tr>
+<tr><td>&ldquo;Is this grounded, or a vendor pitch?&rdquo;</td><td>Named: Sarah&rsquo;s &pound;35&ndash;55M exposure and ring-fenced budget, Charlotte&rsquo;s column-level acceptance criteria, Priya&rsquo;s &pound;10.3M model, David&rsquo;s 55% pipeline toil and AML PoC, Marcus&rsquo;s Azure sign-off and Fabric read, James&rsquo;s competitive picture. Built from your people, not a template.</td></tr>
 </tbody></table></div>
 
-<h2>Evidence base &mdash; the discovery proof (fill in today)</h2>
+<h2>Evidence base &mdash; the discovery proof (Going High credibility)</h2>
 <div class="card"><ul class="exit">
-<li>Sarah (CRO): definition of 'compliant', why budget is stuck, capital/labour numbers</li>
-<li>Charlotte (Architecture): lineage acceptance criteria, ring-fencing constraint, publish deadline</li>
-<li>David (Model Risk Eng): pipeline count + maintenance-burden %</li>
-<li>Priya (Chief Data &amp; AI): which models paused, the two-quarter P&amp;L outcome</li>
-<li>Marcus (CTO): security bar + coexistence boundary + POC scope</li>
-<li>James (Accenture): competitive picture, co-present commitment</li>
+<li><b>Sarah Mitchell (CRO):</b> &pound;2&ndash;3M ring-fenced; &pound;35&ndash;55M penalty exposure; attribute/column-level lineage non-negotiable; POC 3&ndash;5x AML in ~2 weeks; needs retail + investment coverage.</li>
+<li><b>Charlotte Davies (Data Architecture):</b> column-level lineage is sufficient for BCBS and &ldquo;is everything&rdquo;; Snowflake as one-stop shop for all 7 systems; Sigma as BI; AI traceability matters; she publishes the reference architecture.</li>
+<li><b>Dr. Priya Mehta (CDAIO):</b> FCA-suspended SME model = &pound;10.3M P&amp;L + &pound;4.2M/yr; two-quarter deadline; wants governed self-service (Cortex + Sigma); knowledge-graph interest.</li>
+<li><b>Marcus Okafor (CTO):</b> Synapse/Purview can&rsquo;t do column lineage; Fabric at board level; Microsoft preferred supplier; accepted Snowflake-on-Azure proof + HSBC ref; compliance his top priority; approves Charlotte&rsquo;s target architecture = step one.</li>
+<li><b>James O&rsquo;Brien (Accenture):</b> Synapse/Purview gap is the CFO&rsquo;s driver; champion = Office of the CTO; CFO signs off on CTO&rsquo;s compliance assurance; joint delivery de-risks.</li>
+<li><b>David Chen (Model Risk Eng):</b> 55% of team time lost to 7 legacy pipelines; audit failed on column-level traceability to Oracle/DB2; wants one unified platform with a working demo before the ~$1.8M budget expires end-Q2; dual-tenant + Direct Data Sharing for the retail/finance split; identity-resolution (&ldquo;same person across entities&rdquo;) gap; AML PoC 3&ndash;5x, passed a BCBS audit.</li>
 </ul></div>
 
-<footer>Aldwych Bank &middot; CFO Challenge &middot; CFO pitch skeleton. Scored on <b>Going High</b> (financial terms + funded first step) &middot; <b>Going Wide</b> (platform breadth, one story) &middot; <b>Going Fast</b> (live demo + evidence-grounded objection handling). Regenerate after discovery.</footer>
+<footer>Aldwych Bank &middot; CFO Challenge &middot; CFO pitch plan, grounded in 2026-09-17 discovery. Scored on <b>Going High</b> (financial terms + funded first step) &middot; <b>Going Wide</b> (platform breadth, one story) &middot; <b>Going Fast</b> (live demo + evidence-grounded objection handling).</footer>
 </body></html>
