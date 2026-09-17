@@ -1,52 +1,50 @@
-# Aldwych CFO — Snowflake CoWork demo (synthetic)
+# Aldwych CFO — Snowflake CoWork demo (synthetic, loan-level)
 
 A self-contained, reproducible demo that lets **Andrew Harper (CFO)** ask
 plain-English questions in **Snowflake CoWork** (Cortex Analyst under the hood)
-over a small synthetic Aldwych Bank finance/risk data mart. Built to be
-**CFO-suitable** and outcome-led — no lineage plumbing, no external BI.
+over a synthetic Aldwych Bank finance/risk mart with a **50,000-loan SME book**
+underneath — so top-line answers survive deep-dive interrogation by sector,
+region, rating grade, vintage, and loan status.
 
-> All data is **invented** for demo use. Figures are internally consistent so
-> CoWork computes headlines *from the data* — nothing is hand-asserted.
+> All data is **invented** for demo use. Every headline is computed **bottom-up
+> from the loan book** — nothing is hand-asserted.
 
-## What it demonstrates
-The two hero questions:
+## What it demonstrates — CFO question set
+Mapped to the Office-of-the-CFO playbook (trust / growth / risk / efficiency):
 
-1. **"Forecast our SME credit-loss provisions for the next four quarters, and flag which segments are driving the change."**
-2. **"If we reinstate the automated credit model this quarter, what's the payback and how much capital does it free up?"**
+- **Trust the numbers:** *"Forecast SME credit-loss provisions for the next four quarters, and show which segment and sector drive the increase."*
+- **Profitable growth:** *"If we reinstate the automated credit model, compare MANUAL vs MODEL — provisions, manual cost, RWA and capital freed. What's the payback?"*
+- **Reduce risk:** *"What's our total exposure if we miss the FCA/BCBS 239 deadlines this quarter — split deterministic vs probabilistic?"*
+- **Operate efficiently:** *"Why does regulatory reporting take three weeks and how much team capacity is lost to legacy maintenance?"*
 
-Useful follow-ups the semantic view also answers:
-- *"What's our total probability-weighted regulatory exposure this quarter, by component?"*
-- *"Which risk models are offline and what are they costing us?"*
-- *"Why does regulatory reporting take three weeks and where is the effort?"*
+Deep dives it can survive: *by sector, by region, by rating grade, by vintage,
+by loan status* — e.g. "exposure and average PD by sector, highest first",
+"which regions hold the most Default/Watch exposure".
 
-## Run order
-Execute against a role that can create databases, ML forecast objects, and
-agents (demo built with ACCOUNTADMIN). From SnowSQL / Snowsight worksheets, or
-`snow sql -f`:
-
+## Run order (execute against a role that can create DBs, ML objects, agents)
 | File | Creates |
 |------|---------|
-| `00_setup.sql` | `CFO_DEMO_WH` warehouse, `CFO_DEMO.ALDWYCH` schema |
-| `01_tables.sql` | Dimension + fact tables |
-| `02_seed.sql` | Synthetic data (36 months x 3 segments, scenario, exposure, etc.) |
-| `03_forecast.sql` | `ML.FORECAST` model + `FACT_SME_PROVISIONS_FORECAST` (keep the CALL and the RESULT_SCAN capture together — same session) |
-| `04_semantic_view.sql` | `CFO_SEMANTIC` semantic view (Cortex Analyst / CoWork surface) |
-| `05_agent.sql` | `SNOWFLAKE_INTELLIGENCE.AGENTS.ALDWYCH_CFO_AGENT` CoWork agent |
+| `00_setup.sql` | `CFO_DEMO_WH`, `CFO_DEMO.ALDWYCH` |
+| `01_dimensions.sql` | segment, division, sector, region, rating-grade dims |
+| `02_loanbook.sql` | `FACT_LOAN` — 50k deterministic SME facilities |
+| `03_derived.sql` | monthly provisions, model-vs-manual scenario, capital context, risk models, obligations, exposure, process effort (all bottom-up) |
+| `04_forecast.sql` | `ML.FORECAST` over 24 (segment×sector) series → `FACT_PROVISIONS_FORECAST` |
+| `05_semantic_view.sql` | `CFO_SEMANTIC` (Cortex Analyst / CoWork surface) |
+| `06_agent.sql` | `ALDWYCH_CFO_AGENT` + grants |
 | `99_teardown.sql` | Drops everything |
 
-Then open **Snowsight » Snowflake Intelligence (CoWork) » Aldwych CFO Agent**
-and ask the questions above.
+Then open **Snowsight » Snowflake Intelligence (CoWork) » Aldwych CFO Agent**.
 
-## Key figures the data produces
-- MANUAL vs MODEL scenario: provisions **£5.70M → £5.01M**, manual cost **£4.20M → £0.30M**, capital held **£35.34M → £32.50M** (**£2.84M freed**).
-- Annual benefit ≈ **£4.59M/yr** (manual saving + provision reduction); against a ~£2.5M implementation that's roughly a **~6-7 month payback**.
-- Regulatory exposure this quarter: **£59.4M gross**, **£38.7M probability-weighted** (FCA penalty, capital add-on, operational cost, P&L drag).
+## Shape of the data
+- **~£17B** SME book, **50,000** facilities, **8 sectors × 12 UK regions × 10 rating grades**, vintages 2016–2026.
+- **~£376M** slice flagged `model_portfolio` = the FCA-suspended SME credit model.
+- **48 months** of provisions history → **12-month** forecast (~£593M/12mo, rising).
 
-## Notes / tuning
-- `timing_quarter` is stored as text (e.g. `2026-Q4`, the deadline quarter). If a
-  user says "this quarter," steer them to name the quarter, or adjust the
-  dimension to your demo date.
-- Deterministic vs probabilistic exposure is flagged (`is_deterministic`) so the
-  agent can separate the near-certain FCA notice from probabilistic consequences.
-- Figures deliberately avoid the unreconciled "£10.3M" headline seen in the
-  meeting notes; provisions here are a realistic run-rate off a ~£350M SME book.
+## Key figures the data produces (model portfolio)
+- MANUAL vs MODEL: provisions **£12.9M → £10.4M**, manual cost **£4.2M → £0.3M**, capital held **£31.9M → £29.4M** (**~£2.55M freed**).
+- Annual benefit ≈ **£6.4M/yr** vs a ~£2.5M implementation → **~4–5 month payback**.
+- Regulatory exposure (2026-Q4): **£59.4M gross / £38.7M probability-weighted**, deterministic vs probabilistic flagged.
+
+## Notes
+- `timing_quarter` is text (`2026-Q4`, the deadline quarter); say the quarter explicitly rather than "this quarter".
+- Deliberately avoids the unreconciled "£10.3M" headline from the meeting notes; all figures roll up from the loan book.
