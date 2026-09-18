@@ -1,0 +1,187 @@
+
+00:00:00 Speaker 1
+Just because you want a demo, It's better if you sit at this side.
+00:00:04 Speaker 2
+Okay. Yes.
+00:00:05 Speaker 1
+Perfect. Perfect.
+00:00:07 Speaker 2
+And then your team number. Thirty-one. Thirty-one. Okay. Are you okay? I'm fine. Yeah, I just hurt my leg.
+00:00:20 Speaker 1
+Yeah. I know it's a horrible feeling when you hit your knee.
+00:00:30 Speaker 2
+Okay. Let's start it.
+00:00:37 Speaker 3
+Then we have fifteen minutes for this.
+00:00:39 Speaker 2
+So welcome to the meeting.
+00:00:43 Speaker 3
+And how do you want to run it? Time starts now.
+00:00:46 Speaker 1
+Okay. Hi, My name is Cliff, and with me is Kideny from Snowflake Team. We're here because we were tasked by the CFO to come and find solutions regarding to, How the organization is aligning to risk. We understand this risk and regulation. We understand there's there are challenges around you know regulatory reporting, And that's affecting things like the organization's P&L.
+00:01:18 Speaker 1
+It's also affected you know your license. Lose your license if you're if you don't abide by the regulation. We do understand that. We get a few challenges that are driving the regulatory requirements, Specifically around data problems, Which is data leakage. And we spoke to the CBO. You mentioned that.
+00:01:43 Speaker 2
+We spoke to the CBO. Chief Data Officer.
+00:01:54 Speaker 1
+She mentioned that you know a few models have been taken back and. You know they're losing a lot of money, And she cannot even go ahead with the AI strategy because of governance issues. So we want to sit down with you to understand the technicalities of it. I do understand the the crux of it is data provenance, Data lineage. I want to understand what you're currently doing right now and why you can't achieve the the regulatory compliance.
+00:02:23 Speaker 3
+Okay, so I can give you some background information on this. So, currently, About fifty-five percent of my time and my team's time will go to maintaining these old pipelines. So, we have fragmented legacy pipelines from many eras. Some of them are ten years ago, Some of five years ago, And so on. But we have seven separate risk data feeds, All maintained independently, And then any cross-product or cross-entity analysis.
+00:02:57 Speaker 3
+For us, will take weeks to do because the lineage is so far behind us. But we don't actually have a lineage; we have a manual way of tracking the lineage in our system. So, in my opinion, The platform decision is not a technology preference here. It's the only way for us, For my team, To give some back for the real building of new stuff. Now, the whole of our campus is maintained. That's what I'm after here, And I can tell you that I have 1.
+00:03:30 Speaker 3
+8 million cooling budget, Which will expire at the end of Q2. Okay. And if I don't use it then for anything, Then it's just gone. So I don't need to act fast with this. Yeah. I would need to have a platform that runs my stuff with the requirements that we have, Which is the Linux itself. So. One of the audits failed in our environment because the auditors were not able to trace back on a column level,
+00:04:05 Speaker 3
+On the whole whole flow until the source system. Okay.
+00:04:10 Speaker 3
+So that that's where our main issue currently is, And then we have another issue.
+00:04:18 Speaker 3
+We have several divisions in the bank, So we could have David as the retail customer coming in. David as an investor in our finance management company, And when those both go to the system, We don't no longer identify that it's the same person. So we have manual base of doing that, But we would want to do it properly. Okay,
+00:04:43 Speaker 3
+Understand. And we we have done some some in-house development to get some minor things, But nothing bigger.
+00:04:51 Speaker 2
+So okay, interesting.
+00:04:54 Speaker 1
+Thank you so much for sharing.
+00:04:57 Speaker 4
+Thank you so much. If you could share, Like from just a walk through of, Like, if you want to derive any regulatory figure, So how does it look from the source to the consumption side? Like, how how do you fetch data? Which data you look at?
+00:05:14 Speaker 3
+So we have two source systems. We have an Oracle database and the IBM database.
+00:05:21 Speaker 3
+All of our business decisions are inside of these two systems. Then it flows through our process all the way to the models and the end users. Reporting, but there's one important phase here. Some years back, We we had to separate our business legally from each other. The retail bank is its own legal entity, And then the finance is another one. They are different companies,
+00:05:52 Speaker 3
+But we need to have a strict border between those two. Currently, We are spending a lot of time trying to develop between those two.
+00:06:02 Speaker 2
+And can you mention the paid audit?
+00:06:05 Speaker 4
+Yes. The paid audit. I think there is a pen audit to come,
+00:06:06 Speaker 2
+But I am not sure who should ask or how to ask people.
+00:06:21 Speaker 2
+I have a I have a question.
+00:06:24 Speaker 1
+You mentioned you know you have there's a lot of duplication of work, Specifically around various regulatory reporting. Let me give an example. I work a lot with banks, and sometimes when a new regulation comes, They have to build new pipelines, And it's complicated. New connections. Let's say a market risk comes, And then liquidity risk, And then traditional regulatory reporting comes. A lot of customers have to. Start from scratch again, which is build patterns from source and provide additional resources.
+00:06:55 Speaker 1
+Do you have the same problem?
+00:06:57 Speaker 3
+We do. We start from the scratch right now. But this this is something extra that you could bring to us, But it will not tackle the issue at hand right now. Our issue is the traceability, The data lineage, And then the problem with the same person not being identified,
+00:07:18 Speaker 1
+As you say. Okay, understood. So for now, You need to tackle lineage, Get that done. Make sure that you know you're you're safe from a regulation point of view. You can deploy your models. Your team can get more relaxed and work on other things because right now it's more manual effort. Yeah. And I believe this is something that you can actually solve for you. And my colleague here has already prepared what a vision would look like and how we can solve. Really?
+00:07:48 Speaker 4
+Yes. She has. So yeah, yeah. This this our inbuilt data governance capability. So you can see we have a connection of Tableau,
+00:08:00 Speaker 2
+PostgreSQL.
+00:08:01 Speaker 4
+So you can also bring the external data connection, And then you can here see the popularity score. So that basically this is to give you the idea about like which are the most popular tables, So that your team can decide on. Which table to migrate, Which table to decommission, So they are not working on, You know, stale tables. Then data stewards, Data owners can certify this and make it as a certified option. Then there are other options as well, And happy to have a in-depth session for this.
+00:08:33 Speaker 4
+But this is very high level. So as I was talking about the certification, You can see the data in preview, Not just like the data, but also like the few.
+00:08:43 Speaker 4
+Analytics like the reviews for how many are there with five rating, How many are there with four rating. Then the data quality checks as well. So in data quality checks, You can put like the freshness of data, The volume of data,
+00:08:57 Speaker 2
+That kind of.
+00:08:58 Speaker 3
+Trustworthy information. We have the data quality control part. We don't need to. We have our own internal framework.
+00:09:04 Speaker 3
+Okay. Okay. That's that's well.
+00:09:06 Speaker 2
+I would have a question on this image. Yeah.
+00:09:13 Speaker 1
+Just jumping to Linux. Yeah, yeah.
+00:09:15 Speaker 3
+So the Linux, Then do we have connectors for our databases and Oracle DB2?
+00:09:22 Speaker 4
+So we have for PostgreSQL. You mentioned Aurora PostgreSQLgreSQL.
+00:09:26 Speaker 2
+Is it? No, DB2. Okay. We have then Oracle.
+00:09:30 Speaker 4
+Yeah, I think we can check for that.
+00:09:33 Speaker 1
+We have connectors for Oracle.
+00:09:36 Speaker 1
+Yeah. For DB2, it's in the pipeline. That being said, are you working? Currently, what tools are you using to move that data?
+00:09:44 Speaker 3
+We are using Azure Stack currently. Many tools from Azure Stack,
+00:09:50 Speaker 1
+Like Azure Data Factory. Okay, We can definitely work with that.
+00:09:55 Speaker 1
+But we know that you have short timelines.
+00:09:57 Speaker 3
+Well, one thing that I would want to have going over is one platform that does this all, So that we don't need to have one thing running there and another over there.
+00:10:08 Speaker 4
+Exactly. Yeah. Yeah. So that's that's basically the purpose of this. Like you you can have your code connection. You can have your consumer reporting tool connections like Tableau or Power BI as well. And then you can also do like a column level lineage. Like here, if we click on review, So you can see like what all. Reports are dependent on that column.
+00:10:33 Speaker 3
+Okay, both cases are concerning, But now what is this? This is a report that is a best practice. Yeah, yeah.
+00:10:42 Speaker 4
+So this is like a column level lineage which you you are talking about.
+00:10:47 Speaker 3
+Exactly. Yeah. Then how about cases that we need for anti money laundering, Like things like money moves from one bank account to another, And then to another, another, Another, and the chain like that.
+00:11:01 Speaker 3
+Do you have anything that tackle tackle that that can?
+00:11:05 Speaker 1
+That's more of a graph analysis. We have we have partners like Neo4j, Can run on top of exactly the same copy of data as Snowflake, And they can run it as an application and they can do that type of analysis for you. So you do not have to build graph analytics from scratch. Relational AI as well is another partner who are able to. Okay,
+00:11:32 Speaker 3
+But you are talking about partners now. Do you as a Snowflake have something that would handle this?
+00:11:37 Speaker 1
+We do not have something out of the box. Okay, We're working on working on that. We know that you have tight timelines within the next two quarters. We don't have something in GA as of now, And that's why I'm saying you know for you to meet a regulatory requirement at that point in time, We need to make sure you have a robust architecture from the get-go. Can work towards a future architecture using all fully software components, But the most important thing for you as a customer to get this over the line and make sure that you know you're protected from a regulation.
+00:12:11 Speaker 1
+That's what is most important to us.
+00:12:14 Speaker 2
+Okay. Yeah, I I think one last question from me because you have you tried something and stopped in between?
+00:12:18 Speaker 3
+Like, have you started experimenting?
+00:12:28 Speaker 3
+Well, yes, we did try with Azure Stack, and it failed, or it. But my team member Elena Torres did a test with the relational AI AML prototype, Using the Snowflake lineage model. University back,
+00:12:59 Speaker 3
+And with that we were able to actually pass the BCBS audit, Which was on another platform. So we have internally tested Snowflake that much. It's Elena Torres, My director. She's she's working under me.
+00:13:19 Speaker 1
+So you have already tested Snowflake at your function. Yes. Okay. Did you get to? And you met the BCBS. With that plant, With Relational AI, That means you're able to also see the lineage that we didn't get a chance to see.
+00:13:39 Speaker 3
+Yeah, but currently this is just a little poc that we did ourselves.
+00:13:44 Speaker 3
+Communications don't go very well in our company, And I have a lot of things to do. I don't have time to go and talk around with. So this might be a message that we will take forward. Yeah.
+00:13:57 Speaker 1
+Yes. What was your team's overall experience with the platform? How fast were they able to meet the POC performance?
+00:14:07 Speaker 3
+Are you talking about our current platform?
+00:14:10 Speaker 1
+No, with the during the POC. How fast did they build?
+00:14:13 Speaker 3
+POC. Yeah, it went quite fast. Faster than we thought, And we got really good results out of this. But a three times better detection rate than what we had before in our manual process, Which is a great improvement. So definitely, It sounds like the direction for us.
+00:14:34 Speaker 1
+Yeah, Thank you, sir. Does it mean that you said you have 1. 8 million that you have to finish before two? Yes. Budget. How fast do you think you can? Yes. Yes.
+00:14:49 Speaker 3
+What I would need from you is a working demo. Okay. If we see how it works and we can play with that ourselves, We can implement that fast because that I would put as our first priority. Okay. Because after that, it would release time for other things. Yeah. That's the most important thing for us.
+00:15:11 Speaker 2
+Okay. Thank you.
+00:15:13 Speaker 1
+We'll we'll work on that. Because I foresee ways in which it could.
+00:15:18 Speaker 1
+It would be much easier for a team to develop faster because we have built-in AI capabilities for you know to help you implement. And AI capabilities can also do migrations. So if you've already implemented this kind of logic in an existing system, We can capture that and translate it into how it would look like on Snowflake.
+00:15:41 Speaker 2
+And what this means is,
+00:15:42 Speaker 1
+You know, instead of projects taking months, We could shorten it down to.
+00:15:47 Speaker 2
+So a few weeks and meet you with that deadline. Okay. We're gonna find it for more. For sure. Do you have any more questions for us related to Snowflake, related to governance, so that we can implement that within them as well? So we make sure. Okay. Well, just a question on the legal split between the organizations. Yeah.
+00:16:14 Speaker 3
+How would we do that in Snowflake?
+00:16:18 Speaker 3
+To have totally legally separated companies working in the same.
+00:16:24 Speaker 1
+What it would create would have two organizations, Each with a legal contract with the store.
+00:16:32 Speaker 3
+I am not so familiar with the Snowflake terminology.
+00:16:35 Speaker 1
+So what would mean is, We'd have like two different Snowflake tenants. You've come from the agri farm, So you'd have a tenant for retail and a tenant for the other. Fully legally separate different contracts, Different access, Different governance. So fully, you know, Different fence across each other.
+00:16:59 Speaker 1
+Okay. And data transfers between these two others should be fairly easy to transfer data through what's known as Snowflake direct data sharing. No pipelines that you have to build. So last effort, it's more of selecting what data you want to share, What policies on that data,
+00:17:20 Speaker 2
+And who wants to share that data. Done.
+00:17:24 Speaker 3
+Okay. Thank you. I think we are done. Yes. Puchu. Now it's time for me to give feedback for you. Very good that you asked that. What has been done in your team already around this? Was this open to you this idea from Elena Torres, Which matters here? Relational AI, AML prototype—something that the others don't know. We need to tell them that something like this has been done.
+00:17:54 Speaker 3
+That was really good from you. But then, What I, as a customer, Would have wanted to hear more from is that how would you, In practice, Handle the case when David, As a retail customer, David, as a finance instruments customer, Can see how to do.
+00:18:14 Speaker 3
+Anyway, that's it. I'm leaving with that. Happy people. Thank you. Thank you very much.
+00:18:18 Speaker 1
+Appreciate it. Appreciate it. Yeah.

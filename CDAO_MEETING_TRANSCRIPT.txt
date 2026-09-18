@@ -1,0 +1,129 @@
+
+00:00:00 Speaker 1
+Hi guys. I have time agenda. I only got a few minutes for you guys. But I'm here today. Give it there. Yeah, how can I help you? Hi, Dr. Priya.
+00:00:21 Speaker 2
+Thank you so much for taking the time to meet us. My name is Cliff. I have with me Ketki, And I have Julio. We're from Snowflake. And we've been tasked to work with, By the CFO, Work with various teams across the organization, Specifically around data, And specifically around how the various how the various situations are affecting regulation, PNL,
+00:00:51 Speaker 2
+AI adoption, And we have a few.
+00:00:58 Speaker 2
+We're meeting you together with all the CTO, The head of risk, as well as other other personas within the organization, Just to understand how data affects the existing you know scope of scope of work. And you know we've heard a lot about you know based on discussions with the CFO and other members of the team. And we have want to understand more from you from a CDO perspective. On a couple of things.
+00:01:30 Speaker 2
+First is we understand that your role is to make sure that data can deliver value to the business, As well as AI. So, and we know that you know there's been there's been some hurdles towards achieving that, Specifically around regulation. We have the BCBS regulation affecting the regul the regulatory side of the of the business. We have the CCP side, Which you know it's preventing your models from going. Production that you have to pull back.
+00:02:00 Speaker 2
+So I want to understand the from that perspective. A couple of things have have come into mind. The first is these two these two requirements all have the same root cause, Which is you know data provenance and lineage. We know that from the regulatory side, There's already a budget and are allocated to that to that work. But because these two have the same root cause. Are you two working together? First of all, How do you plan to tackle?
+00:02:31 Speaker 2
+Are you going to tackle that across two different streams or is it going to be in one stream?
+00:02:37 Speaker 1
+Yeah, that's a good question. And to be very honest, Is I was waiting for somebody to, From outside the bank, To bring them together. Okay. Just to your point, I think it's the same road code, Right? So we had the issue with the BCBS. Right, which is about calculations. We had the issue with the FCA, Which is about the model, Which we it's affecting our P&L P&L already. Right, we have we have 300 million pounds of small,
+00:03:13 Speaker 1
+Medium enterprises credits that we have to manually measure right now. So we have a model. That model has to be suspended because we are not able to provide the lineage, Right? The provenance of the data being used there. And to be connected, Everything is is connected.
+00:03:39 Speaker 3
+Which type of model is this? Is it like a risk calc or a credit calculation?
+00:03:46 Speaker 1
+Yeah, yeah, it's machine learning, Risk credit calculation, right? So. We got all these SMEs that we need to give them a score, Right? The model is working pretty well. We're happy with the results of the model. It's not about that performance. It's about that the regulator needs has to prove that that model has been training on what data, What is the quality of the data. So all those things are not clear today. We're not able to prove that, And that's the reason that we cannot use that anymore.
+00:04:18 Speaker 2
+Understood. We've. It's a common problem across organisations. We have done, know, we've worked with a few banks specifically around this. Now, onto, I know that model affects P&L, Right? Would you be okay to give me some metrics? Because, for example, right? Would, When it comes to credit risk scoring, it either affects yoube okayr what's your exposure in terms of you either over leveraged as a bank, or you cannot get. You have to give decline so many customers. Some metrics. Because for example when it comes to credit risk scoring, it either, And that affects yourwhat's your exposure in terms of you either over leveraged as a bank, or you cannot get. You have to decline so many customers, and that affects your revenues.
+00:04:49 Speaker 2
+Do you have any numbers?
+00:04:51 Speaker 1
+Yes, what I can share with you, Right, is that as I told you, We have three hundred forty million pounds that are ready for small medium enterprises that we had to manually work with them. Yes. So we have something within the bank called BPS, Which is basic points, Right? The basic point is zero point zero one percent. We think we estimate. If we go back to being able to use our models, We can have an eighteen,
+00:05:23 Speaker 1
+One hundred eight basic points affecting those three hundred fifty million pounds.
+00:05:28 Speaker 2
+So eighteen basic points affecting the forty-five million pounds.
+00:05:31 Speaker 1
+But if you have four hundred fifty million points and one basic point is zero point zero one, So at the end it's around I think it's ten dot three million pounds that can be affected. Or P&L. One is about the model itself. Yeah. When we use that model, The precision is better, right? Yes. Another, of course, Is about I think it's around four point two million people. Yeah. Sorry, Four point two million pounds that we are now spending on labor,
+00:06:02 Speaker 1
+Actuaries that have to go and review that, And make all the models.
+00:06:07 Speaker 2
+You mentioned you're spending four point two million. Is that coming? Are those in-house resources, Or using a partner to provide those resources?
+00:06:14 Speaker 1
+I don't know who they use. I don't care about it. The thing is, it's effort. It might be enough because there's the money we had to spend. We have partners like Accenture, But I think it's just more internal people, Police officers that have to go and there. I know Sarah got that problem because I think she's also responsible for the models, And I think it was on 13 who they were going to stop because the FCA stopped. Yeah.
+00:06:42 Speaker 2
+Thank you so much for that. The second component is around AI, Delivering AI value to the business. Second, that around AI because you're responsible for making sure that you know AI projects are delivered successful and with the data underpinning it. Because you know you cannot have a data successful AI strategy without a successful data strategy. AI requires governance, Specifically around regulated industries like your case. What do you see as, Challenges in making sure that you know the team is able to deliver AI success,
+00:07:15 Speaker 2
+But yes, for successful.
+00:07:18 Speaker 1
+That's an interesting step because we have the day-to-day thing. We have to fix all the regulation and stuff. We have a short time too, So we have to deliver something sooner the better for the CFO. Yes, But also I have a longer strategy, Which is around AI. Yes, so. I want to make sure that when we take the race model problem, The race modelers can go and use natural language to ask questions.
+00:07:50 Speaker 1
+I really want to open the data platform to everybody in the bank, Right? I would like that everybody can go and use. So I think it's one of the things that are doing some work with other companies, Like I think it's Sigma. Not sure what they're doing. Not sure if something is really needed. I want to invest there, Or I should be using things like you. I think some of the teams are working with also Snowflake around something called Snowflake Intelligence. Yes. Not sure what they can do and how they can help me.
+00:08:24 Speaker 2
+Yeah. All right. So we can we can definitely help across those two lines. We know top of mind the most important thing is to make sure you have. You're able to cover your data provenance to get those models back. Check the main challenge as we've seen is when it comes to lineage, Right? It's not like we can solve that quite easily because we have comes out as out of the box capability, And the reason around that is governance. Governance is really crucial towards as a foundation of our platform,
+00:08:55 Speaker 2
+Which means the governance that will enable the lineage and data provenance to bring in those models. It's going to be the same capability that will allow you to also provide, you know, Governed access to data for AI use cases. Right? We'll be keen. We'll we'll work with Sigma to understand what they're doing as well. But just to just to give you some comfort, This is something we've done with lots of banks, Lots of G20 banks across the world in India,
+00:09:26 Speaker 2
+In the US, in Africa, You know, Asia Pacific. For example, you know, J. P. Morgan and Barclays—they are customers, And you know, we help them with their risk and regulatory reporting. So we're very confident we can we can support that. I think that's on my side. I want to know what questions do you have for us?
+00:09:46 Speaker 1
+I don't know if you guys are doing anything about fraud analysis because we have another. I don't know if you guys talk to. I was forgetting the people I work with over there.
+00:10:00 Speaker 1
+David Chen from Model Risk Engineering. I think these guys are guys working on more advanced stuff like fraud analysis and demanding engineering. There, I think it can be a good opportunity for us to affect our PNL there. Is there anything you are doing with those guys?
+00:10:20 Speaker 2
+We are about we are about to meet them in a few hours, So we haven't met them yet. But thanks for giving us the heads up. We will definitely. You know, work with the head of model risk engineering to understand what they're doing from the fraud perspective, And understand how that affects PNL. Because this is very important information for us to gather and understand when before our meeting with the CFO tomorrow.
+00:10:43 Speaker 1
+I want to see any opportunity where we can affect PNL is important.
+00:10:48 Speaker 2
+I believe yes
+00:10:49 Speaker 1
+That's what I present to the CFO. Also, I need to understand what differentiates you from others. Because everybody, to be honest, Everybody's having the second speech. We got everything. You have all of your data, All of the lineage,
+00:11:07 Speaker 1
+And I don't care if it's more difficult or easier, Right? So, at the end, What is the cost? What is the benefit that can?
+00:11:17 Speaker 2
+Of course, it's how we foresee ourselves is a differentiator. Two things: one, time to value. You know, we have short time, short deadlines. It can help you meet those. Short deadlines for two quarters.
+00:11:29 Speaker 3
+That's quite interesting.
+00:11:31 Speaker 1
+I have a short deadline. With you, I have two quarters.
+00:11:35 Speaker 2
+We are aware of that
+00:11:37 Speaker 1
+And you know, two quarters to provide a response.
+00:11:43 Speaker 2
+Yeah. Yeah, we can work together to make sure you're able to achieve that in two quarters. The second is okay.
+00:11:48 Speaker 1
+Make it into two quarters. What's possible for you to make it into quarters? What differentiates you from others?
+00:11:54 Speaker 2
+It's two parts. One. The platform is how it's set up. It's it's really easy to use, So you don't have to set. There's not much configuration you have to do to get things going. That's number one. We have a lot of out of the box capabilities that you don't have to pre build. You know, governance. They just come out of the box and are automated in a fashion. And third is, We have expertise. Right? We have internal expertise. We have teams that have already built this before, Which means you know from our knowledge. Use it.
+00:12:25 Speaker 2
+They do not have to build the knowledge on how to build this, You know, to apply the regular regulation because they've already done it across other banks before. They have they have that common knowledge that they can bring forward, Which means again is a much shorter learning curve when working with your team, And you can speed up that implementation.
+00:12:47 Speaker 1
+What about this thing? You know, you are on the headlines now. This is market intelligence. Is that something I can use to? I don't know. Replace dashboards, Whatever. Do I just use a snowflake intelligence for everything, Or what should be my strategy?
+00:13:04 Speaker 3
+Yeah, I I think your main AI outcome is also kind of you want to enable this self service, But we would like to understand like who all you want to be a part of that self service and what would be the purpose of it. Is it the exact level? Is it your partner?
+00:13:21 Speaker 1
+Yeah, I want I want the chief officer to be able to use it. Yeah. The chief modeling officer to understand how their models are working, How they are performing. Yeah. I want my CFOs being able to use it and being able to ask any questions there, right? Yeah.
+00:13:39 Speaker 1
+So that's the.
+00:13:40 Speaker 3
+Yeah, I can quickly like in one second I can give you the idea. So you mentioned Snowflake Intelligence, right? Yeah. This is a rebranding of Snowflake Intelligence. We call it like Snowflake Cortex, And it's like yeah, Yeah. But yeah, that's why we are here. So you just ask a question in plain English, You get the response, and under the hood, Like a lot of workhorse, It executes the SQL for you. So basically, it's for the execs who do not want to write or don't know how to write a SQL or write a code.
+00:14:10 Speaker 3
+So it's really useful for them. But there is a lot to it. It has automation. It has artifacts and everything. I think that would be something we would like to cover as well.
+00:14:20 Speaker 1
+If this is of interest. So I I hear someone that he's working with these guys I mentioned Sigma. Yeah. That means I don't need that anymore. I can use Snowflake Intelligence.
+00:14:32 Speaker 3
+Yeah, I mean like it's like two folds. And then correct me if I'm wrong, And add add to it. So, Sigma, if you are choosing Sigma as your BI tool,
+00:14:43 Speaker 3
+Then yes, ultimately the call goes to Snowflake. They use Snowflake agent under the hood.
+00:14:51 Speaker 1
+Specific. In my experience
+00:14:56 Speaker 4
+Some users prefer that Excel, like Excel, Phil, and Sigma is combining the BI with the, Traditional Excel until the ability to run functions inside it. So there is a space for Sigma, But also for work for Snowflake and Teradata.
+00:15:15 Speaker 1
+Interesting. I have different profiles.
+00:15:18 Speaker 4
+The good advantage is that both of them use Snowflake compute. So you either use Sigma or Snowflake.
+00:15:27 Speaker 1
+You still get the same. Yeah. Anything you guys doing with knowledge graphs, Which is a hot topic for us too?
+00:15:34 Speaker 2
+We are working on knowledge graphs, And this is all about.
+00:15:38 Speaker 1
+You have one minute.
+00:15:42 Speaker 2
+Yeah, we are. This is something we are currently working on, And this is all about creating the enterprise context layer for for organization, Which means you know getting all the tribal knowledge about your organization coming in from your documentation. How you people are using the data, Building this.
+00:16:03 Speaker 2
+Common knowledge, You know, like a business ontology, Which defines how various information pieces are connected to each other, And all of all that is about, You know, making sure that you know when your AI agents are speaking to your data, You have the right context, And in this case, they can be accurate, And this means they can be trusted, And this means you know your AI use cases can easily go to production a much shorter amount of time.
+00:16:26 Speaker 1
+Then I need to go to the data bricks now.
+00:16:29 Speaker 2
+Thank you.
+00:16:33 Speaker 2
+啊。
